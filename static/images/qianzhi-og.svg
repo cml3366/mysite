@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g fill="#93c5fd">
+    <circle cx="1040" cy="110" r="6"/>
+    <circle cx="1080" cy="160" r="4"/>
+    <circle cx="1010" cy="190" r="3"/>
+  </g>
+  <text x="80" y="180" fill="#60a5fa" font-size="32" font-family="Segoe UI,Arial,Helvetica,sans-serif" opacity=".9">cml3366 · Blog</text>
+  <text x="80" y="270" fill="#ffffff" font-size="86" font-weight="700" font-family="Segoe UI,Arial,Helvetica,sans-serif">前知</text>
+  <text x="80" y="340" fill="#d1d5db" font-size="30" font-family="Segoe UI,Arial,Helvetica,sans-serif">从古典智慧到现代概率与九爻八十一卦法</text>
+  <text x="80" y="390" fill="#9ca3af" font-size="26" font-family="Segoe UI,Arial,Helvetica,sans-serif">批判传统术数与数据迷信，提出结构化概率预测新框架</text>
+  <rect x="80" y="430" width="380" height="4" fill="#2563eb" opacity=".8"/>
+  <text x="80" y="490" fill="#93c5fd" font-size="24" font-family="Segoe UI,Arial,Helvetica,sans-serif">https://blog.cml3366.cn/posts/qianzhi/</text>
+</svg>
+
