@@ -2,7 +2,7 @@
   <main class="container">
     {{ partial "status-panel.html" . }}
     {{ .Content }}
-    {{< share >}}
+    {{ partial "share.html" . }}
   </main>
 {{ end }}
 

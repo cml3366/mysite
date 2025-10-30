@@ -1,0 +1,24 @@
+<div class="post-share" style="margin-top:2rem;border-top:1px solid #e5e7eb;padding-top:1rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center">
+  <strong>分享：</strong>
+  <button id="copy-link-btn" style="padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;cursor:pointer">复制链接</button>
+  <a href="https://twitter.com/intent/tweet?url={{ .Page.Permalink | urlquery }}&text={{ .Page.Title | urlquery }}" target="_blank" rel="noopener" style="padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;text-decoration:none">Twitter</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Page.Permalink | urlquery }}" target="_blank" rel="noopener" style="padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;text-decoration:none">Facebook</a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Page.Permalink | urlquery }}" target="_blank" rel="noopener" style="padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;text-decoration:none">LinkedIn</a>
+</div>
+<script>
+  (function(){
+    var btn=document.getElementById('copy-link-btn');
+    if(!btn) return;
+    btn.addEventListener('click', async function(){
+      try{
+        const url = window.location.href;
+        await navigator.clipboard.writeText(url);
+        btn.textContent = '已复制';
+        setTimeout(()=>btn.textContent='复制链接',1500);
+      }catch(e){
+        btn.textContent = '复制失败';
+      }
+    });
+  })();
+</script>
+
