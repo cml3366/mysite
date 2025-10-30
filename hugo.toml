@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
-theme = 'ananke'
+theme = 'blowfish'
 
 [menu]
   [[menu.main]]
@@ -12,3 +12,8 @@ theme = 'ananke'
     name = 'Follow'
     url = 'https://github.com/cml3366'
     weight = 6
+
+[params]
+  colorScheme = 'dark'
+  defaultAppearance = 'dark'
+  homepageLayout = 'profile'
