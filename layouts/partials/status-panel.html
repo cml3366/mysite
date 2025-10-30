@@ -1,0 +1,23 @@
+<aside id="status-panel" style="position:fixed;right:16px;top:120px;z-index:9999;max-width:280px;background:rgba(17,24,39,.8);color:#e5e7eb;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.35)">
+  <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+    <span style="display:inline-block;width:8px;height:8px;background:#22d3ee;border-radius:9999px"></span>
+    <strong>博客状态</strong>
+  </div>
+  {{ $pages := .Site.RegularPages }}
+  {{ $count := len $pages }}
+  {{ $latest := index ($pages.ByDate.Reverse) 0 }}
+  <div style="font-size:.9rem;line-height:1.6">
+    <div>页面总数：<strong>{{ $count }}</strong></div>
+    {{ if $latest }}
+      <div>最新文章：<a href="{{ $latest.RelPermalink }}" style="color:#93c5fd;text-decoration:none">{{ $latest.Title }}</a></div>
+      <div style="opacity:.8">时间：{{ $latest.Date.Format "2006-01-02 15:04" }}</div>
+    {{ end }}
+    <div>RSS：<a href="/index.xml" style="color:#a7f3d0;text-decoration:none">/index.xml</a></div>
+    <div style="opacity:.8">生成：{{ now.Format "2006-01-02 15:04" }}</div>
+  </div>
+  <div style="margin-top:.6rem;display:flex;gap:.5rem;flex-wrap:wrap">
+    <a href="/admin/" style="padding:.25rem .5rem;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#e5e7eb;text-decoration:none">管理中心</a>
+    <a href="https://github.com/cml3366/mysite" target="_blank" rel="noopener" style="padding:.25rem .5rem;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#e5e7eb;text-decoration:none">GitHub</a>
+  </div>
+</aside>
+

@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <main class="container">
+    {{ partial "status-panel.html" . }}
+    {{ .Content }}
+    {{ range .Pages.ByDate.Reverse }}
+      <article style="margin-bottom:1.25rem">
+        <h2 style="margin:0 0 .25rem 0"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <div style="opacity:.7;font-size:.9rem">{{ .Date.Format "2006-01-02" }}</div>
+      </article>
+    {{ end }}
+  </main>
+{{ end }}
+

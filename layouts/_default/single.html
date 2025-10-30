@@ -1,5 +1,6 @@
 {{ define "main" }}
   <main class="container">
+    {{ partial "status-panel.html" . }}
     {{ .Content }}
     {{< share >}}
   </main>
