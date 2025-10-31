@@ -325,5 +325,3 @@ images = ['/images/qigua-tianyan-og.svg']
 
 **道法自然，天人合一。炁卦在焉，混沌未开，万物萌生。**
 
-{{< share >}}
-

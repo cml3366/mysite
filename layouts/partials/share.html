@@ -1,24 +1,84 @@
-<div class="post-share" style="margin-top:2rem;border-top:1px solid #e5e7eb;padding-top:1rem;display:flex;gap:.75rem;flex-wrap:wrap;align-items:center">
+<div class="post-share" style="margin-top:2rem;border-top:1px solid #e5e7eb;padding-top:1rem;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center">
   <strong>分享：</strong>
-  <button id="copy-link-btn" style="padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;cursor:pointer">复制链接</button>
-  <a href="https://twitter.com/intent/tweet?url={{ .Page.Permalink | urlquery }}&text={{ .Page.Title | urlquery }}" target="_blank" rel="noopener" style="padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;text-decoration:none">Twitter</a>
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Page.Permalink | urlquery }}" target="_blank" rel="noopener" style="padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;text-decoration:none">Facebook</a>
-  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ .Page.Permalink | urlquery }}" target="_blank" rel="noopener" style="padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;text-decoration:none">LinkedIn</a>
+  <button id="copy-link-btn" class="btn-share">复制链接</button>
+  <!-- 桌面直链分享 -->
+  <a class="btn-share" href="https://twitter.com/intent/tweet?url={{ .Page.Permalink | absURL | urlquery }}&text={{ .Page.Title | urlquery }}" target="_blank" rel="noopener">X</a>
+  <a class="btn-share" href="https://www.facebook.com/sharer/sharer.php?u={{ .Page.Permalink | absURL | urlquery }}" target="_blank" rel="noopener">Facebook</a>
+  <a class="btn-share" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{ .Page.Permalink | absURL | urlquery }}&title={{ .Page.Title | urlquery }}" target="_blank" rel="noopener">QQ空间</a>
+  <a class="btn-share" href="https://service.weibo.com/share/share.php?url={{ .Page.Permalink | absURL | urlquery }}&title={{ .Page.Title | urlquery }}" target="_blank" rel="noopener">微博</a>
+  <a class="btn-share" href="https://t.me/share/url?url={{ .Page.Permalink | absURL | urlquery }}&text={{ .Page.Title | urlquery }}" target="_blank" rel="noopener">Telegram</a>
+  <a class="btn-share" href="https://www.reddit.com/submit?url={{ .Page.Permalink | absURL | urlquery }}&title={{ .Page.Title | urlquery }}" target="_blank" rel="noopener">Reddit</a>
+  <button id="zhihu-copy" class="btn-share">知乎（复制）</button>
+  
+  <!-- 扫码分享：微信/朋友圈/小红书/抖音/B站/快手 等 -->
+  <button id="wx-share" class="btn-share">微信/朋友圈扫码</button>
+  <button id="more-share" class="btn-share">更多平台扫码</button>
 </div>
+
+<!-- 简单样式 -->
+<style>
+  .btn-share{padding:.4rem .7rem;border:1px solid #d1d5db;border-radius:.375rem;background:#f9fafb;cursor:pointer;text-decoration:none;color:inherit}
+  .share-mask{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;z-index:60}
+  .share-modal{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:#fff;border-radius:12px;padding:16px 18px;box-shadow:0 14px 40px rgba(0,0,0,.35);display:none;z-index:61;max-width:92vw}
+  .share-modal h3{margin:.2rem 0 .6rem 0}
+  .share-modal img{display:block;margin:auto;border:1px solid #e5e7eb;border-radius:8px}
+  .share-close{position:absolute;right:10px;top:8px;background:#f3f4f6;border:1px solid #e5e7eb;border-radius:8px;padding:.2rem .5rem;cursor:pointer}
+</style>
+
+<div id="share-mask" class="share-mask"></div>
+<div id="share-modal" class="share-modal">
+  <button class="share-close" id="share-close">关闭</button>
+  <h3>扫码在手机端分享</h3>
+  <div style="text-align:center">
+    <img id="qrcode-img" src="" alt="二维码" width="220" height="220" />
+    <div style="margin-top:.5rem;color:#6b7280;font-size:.9rem">使用微信/朋友圈/小红书/抖音/哔哩哔哩/快手等 App 打开后转发</div>
+  </div>
+  <div style="margin-top:.6rem;color:#6b7280;font-size:.85rem">链接：<span id="share-url"></span></div>
+  <div id="short-url-wrap" style="margin-top:.3rem;color:#6b7280;font-size:.85rem;display:none">短链：<span id="short-url"></span></div>
+</div>
+
 <script>
   (function(){
-    var btn=document.getElementById('copy-link-btn');
-    if(!btn) return;
-    btn.addEventListener('click', async function(){
-      try{
-        const url = window.location.href;
-        await navigator.clipboard.writeText(url);
-        btn.textContent = '已复制';
-        setTimeout(()=>btn.textContent='复制链接',1500);
-      }catch(e){
-        btn.textContent = '复制失败';
+    const url = window.location.href;
+    // 从站点参数读自定义二维码/短链规则
+    const qrTpl = '{{ with .Site.Params.share.qrApi }}{{ . }}{{ else }}https://api.qrserver.com/v1/create-qr-code/?size=220x220&data={url}{{ end }}';
+    const shortTpl = '{{ with .Site.Params.share.shortBase }}{{ . }}{{ else }}{{ end }}';
+    const copyBtn = document.getElementById('copy-link-btn');
+    const wxBtn = document.getElementById('wx-share');
+    const moreBtn = document.getElementById('more-share');
+    const mask = document.getElementById('share-mask');
+    const modal = document.getElementById('share-modal');
+    const closeBtn = document.getElementById('share-close');
+    const qrImg = document.getElementById('qrcode-img');
+    const shareUrlText = document.getElementById('share-url');
+
+    function openModal(){
+      const qrApi = (qrTpl || '').replace('{url}', encodeURIComponent(url));
+      qrImg.src = qrApi;
+      shareUrlText.textContent = url;
+      // 生成短链展示（仅字符串替换，不发起后端请求）
+      if(shortTpl && shortTpl.length > 0){
+        const s = shortTpl.replace('{url}', encodeURIComponent(url));
+        document.getElementById('short-url').textContent = s;
+        document.getElementById('short-url-wrap').style.display = 'block';
       }
-    });
+      mask.style.display = 'block';
+      modal.style.display = 'block';
+    }
+    function closeModal(){ mask.style.display = 'none'; modal.style.display = 'none'; }
+
+    if(copyBtn){
+      copyBtn.addEventListener('click', async function(){
+        try{ await navigator.clipboard.writeText(url); copyBtn.textContent='已复制'; setTimeout(()=>copyBtn.textContent='复制链接',1500);}catch(e){ copyBtn.textContent='复制失败'; }
+      });
+    }
+    if(wxBtn){ wxBtn.addEventListener('click', openModal); }
+    if(moreBtn){ moreBtn.addEventListener('click', openModal); }
+    const zhihuCopy = document.getElementById('zhihu-copy');
+    if(zhihuCopy){ zhihuCopy.addEventListener('click', async function(){ try{ await navigator.clipboard.writeText(url); zhihuCopy.textContent='已复制'; setTimeout(()=>zhihuCopy.textContent='知乎（复制）',1500);}catch(e){ zhihuCopy.textContent='复制失败'; } }); }
+    if(closeBtn){ closeBtn.addEventListener('click', closeModal); }
+    if(mask){ mask.addEventListener('click', closeModal); }
   })();
 </script>
+
 
