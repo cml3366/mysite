@@ -5,7 +5,6 @@ draft = false
 slug = 'qianzhi'
 tags = ['前知','九爻八十一卦','预测方法论','哲学']
 description = '从古典智慧到现代概率与九爻八十一卦法，系统阐述“前知”之道：批判传统术数与数据迷信，提出基于三进制高维状态与概率转移的预测新框架，并给出伦理与实践路径。'
-images = ['/images/gohugo-default-sample-hero-image.jpg']
 images = ['/images/qianzhi-og.svg']
 +++
 
