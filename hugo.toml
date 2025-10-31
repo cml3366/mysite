@@ -1,7 +1,8 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://blog.cml3366.cn/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 'blowfish'
+relativeURLs = true
 
 [menu]
   [[menu.main]]
@@ -17,3 +18,11 @@ theme = 'blowfish'
   colorScheme = 'dark'
   defaultAppearance = 'dark'
   homepageLayout = 'profile'
+  tagline = '宇宙之光 × 古典之韵'
+  customCSS = ["/css/reader.css"]
+
+  [params.share]
+    # 自定义二维码服务（将 {url} 替换为真实链接）。示例为 qrserver 公共服务
+    qrApi = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data={url}"
+    # 可选：自有短链（仅拼接，不发起后端请求），将 {url} 替换为真实链接
+    shortBase = ""
