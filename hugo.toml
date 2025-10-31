@@ -18,9 +18,15 @@ relativeURLs = true
 [params]
   colorScheme = 'dark'
   defaultAppearance = 'dark'
-  homepageLayout = 'default'
   tagline = '宇宙之光 × 古典之韵'
   customCSS = ["/css/reader.css"]
+  
+  [params.homepage]
+    layout = "background"
+    showRecent = true
+    showRecentItems = 10
+    showMoreLink = true
+    showMoreLinkDest = "/posts/"
 
   [params.share]
     # 自定义二维码服务（将 {url} 替换为真实链接）。示例为 qrserver 公共服务
