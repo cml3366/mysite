@@ -1,6 +1,7 @@
 baseURL = 'https://blog.cml3366.cn/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
+# Updated: 2025-10-31 - Force rebuild for CDN cache refresh
 theme = 'blowfish'
 relativeURLs = true
 
@@ -17,7 +18,7 @@ relativeURLs = true
 [params]
   colorScheme = 'dark'
   defaultAppearance = 'dark'
-  homepageLayout = 'profile'
+  homepageLayout = 'default'
   tagline = '宇宙之光 × 古典之韵'
   customCSS = ["/css/reader.css"]
 
