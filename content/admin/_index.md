@@ -1,8 +1,7 @@
 ---
 title: "管理中心"
 description: "常用链接与操作"
-menu: "main"
-weight: 7
+draft: true
 ---
 
 ## 快捷管理

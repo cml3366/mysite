@@ -1,4 +1,5 @@
-<aside id="status-panel" style="position:fixed;right:16px;top:120px;z-index:9999;max-width:280px;background:rgba(17,24,39,.8);color:#e5e7eb;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.35)">
+<aside id="status-panel" style="position:fixed;right:16px;top:180px;z-index:50;max-width:280px;background:rgba(17,24,39,.8);color:#e5e7eb;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;backdrop-filter:blur(8px);box-shadow:0 10px 30px rgba(0,0,0,.35);max-height:60vh;overflow:auto;pointer-events:none;">
+  <button id="status-toggle" aria-label="toggle status" style="position:absolute;left:-36px;top:8px;width:28px;height:28px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:rgba(17,24,39,.8);color:#e5e7eb;cursor:pointer;pointer-events:auto">≡</button>
   <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
     <span style="display:inline-block;width:8px;height:8px;background:#22d3ee;border-radius:9999px"></span>
     <strong>博客状态</strong>
@@ -6,18 +7,31 @@
   {{ $pages := .Site.RegularPages }}
   {{ $count := len $pages }}
   {{ $latest := index ($pages.ByDate.Reverse) 0 }}
-  <div style="font-size:.9rem;line-height:1.6">
+  <div style="font-size:.9rem;line-height:1.6;pointer-events:auto">
     <div>页面总数：<strong>{{ $count }}</strong></div>
     {{ if $latest }}
-      <div>最新文章：<a href="{{ $latest.RelPermalink }}" style="color:#93c5fd;text-decoration:none">{{ $latest.Title }}</a></div>
+      <div>最新文章：<a href="{{ $latest.RelPermalink }}" style="color:#93c5fd;text-decoration:none;pointer-events:auto">{{ $latest.Title }}</a></div>
       <div style="opacity:.8">时间：{{ $latest.Date.Format "2006-01-02 15:04" }}</div>
     {{ end }}
-    <div>RSS：<a href="/index.xml" style="color:#a7f3d0;text-decoration:none">/index.xml</a></div>
+    <div>RSS：<a href="/index.xml" style="color:#a7f3d0;text-decoration:none;pointer-events:auto">/index.xml</a></div>
     <div style="opacity:.8">生成：{{ now.Format "2006-01-02 15:04" }}</div>
   </div>
-  <div style="margin-top:.6rem;display:flex;gap:.5rem;flex-wrap:wrap">
-    <a href="/admin/" style="padding:.25rem .5rem;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#e5e7eb;text-decoration:none">管理中心</a>
-    <a href="https://github.com/cml3366/mysite" target="_blank" rel="noopener" style="padding:.25rem .5rem;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#e5e7eb;text-decoration:none">GitHub</a>
+  <div style="margin-top:.6rem;display:flex;gap:.5rem;flex-wrap:wrap;pointer-events:auto">
+    <a href="https://github.com/cml3366/mysite" target="_blank" rel="noopener" style="padding:.25rem .5rem;border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#e5e7eb;text-decoration:none;pointer-events:auto">GitHub</a>
   </div>
 </aside>
+<script>
+  (function(){
+    var p=document.getElementById('status-panel');
+    var t=document.getElementById('status-toggle');
+    if(!p||!t) return;
+    var open=true;
+    t.addEventListener('click',function(){
+      open=!open;
+      p.style.maxWidth = open? '280px':'0';
+      p.style.padding = open? '12px 14px':'8px 0';
+      p.style.overflow = open? 'auto':'hidden';
+    });
+  })();
+</script>
 
