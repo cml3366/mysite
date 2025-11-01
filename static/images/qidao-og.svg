@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g fill="#a78bfa" opacity=".6">
+    <circle cx="1100" cy="90" r="8"/>
+    <circle cx="1130" cy="140" r="5"/>
+    <circle cx="1060" cy="170" r="4"/>
+    <circle cx="1150" cy="220" r="6"/>
+  </g>
+  <text x="80" y="180" fill="#8b5cf6" font-size="32" font-family="Segoe UI,Arial,Helvetica,sans-serif" opacity=".9">cml3366 · Blog</text>
+  <text x="80" y="270" fill="#ffffff" font-size="82" font-weight="700" font-family="Segoe UI,Arial,Helvetica,sans-serif">炁道</text>
+  <text x="80" y="340" fill="#d1d5db" font-size="28" font-family="Segoe UI,Arial,Helvetica,sans-serif">混元一炁，阴阳未判</text>
+  <text x="80" y="390" fill="#9ca3af" font-size="24" font-family="Segoe UI,Arial,Helvetica,sans-serif">从二元到三元，从六十四卦到八十一卦的三态易学</text>
+  <rect x="80" y="430" width="400" height="4" fill="#8b5cf6" opacity=".8"/>
+  <text x="80" y="490" fill="#a78bfa" font-size="22" font-family="Segoe UI,Arial,Helvetica,sans-serif">https://blog.cml3366.cn/posts/qidao/</text>
+</svg>
+
