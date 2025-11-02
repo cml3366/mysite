@@ -25,9 +25,9 @@ relativeURLs = true
   # 社交媒体图片（默认）
   defaultSocialImage = '/images/qigua-tianyan-og.svg'
   
-  # 网站验证（如需要，后续可添加）
+  # 网站验证
   [params.verification]
-    # google = "your-google-verification-code"
+    google = "OFOCuMjsQOrC4krVPhVmMwafh1PhfGFDOBgu947m2ns"
     # bing = "your-bing-verification-code"
   
   # 首页配置
