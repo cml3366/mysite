@@ -1,9 +1,10 @@
 {{ define "main" }}
   <main class="container">
-    {{ partial "status-panel.html" . }}
+    {{/* status panel temporarily disabled to avoid click overlay */}}
     {{ .Content }}
     {{ partial "share.html" . }}
   </main>
+  {{/* {{ partial "fab.html" . }} */}}
 {{ end }}
 
 
