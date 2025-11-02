@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# 阻止爬取管理页面
+Disallow: /admin/
+
+# Sitemap 位置
+Sitemap: https://blog.cml3366.cn/sitemap.xml
+

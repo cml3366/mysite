@@ -1,0 +1,141 @@
+{{/* SEO 增强标签 - 在主题默认 head 后添加 */}}
+
+{{/* 优化关键词显示 */}}
+{{ if .IsHome }}
+  {{/* 首页使用网站级关键词 */}}
+  {{ with .Site.Params.keywords }}
+    <meta name="keywords" content="{{ delimit . ", " }}">
+  {{ end }}
+{{ else }}
+  {{/* 文章页使用文章标签，确保格式正确 */}}
+  {{ with .Params.tags }}
+    <meta name="keywords" content="{{ delimit . ", " }}">
+  {{ end }}
+{{ end }}
+
+{{/* 增强的 Open Graph 文章标签 */}}
+{{ if not .IsHome }}
+  <meta property="og:type" content="article">
+  {{ with .Params.tags }}
+    {{ range . }}
+      <meta property="article:tag" content="{{ . }}">
+    {{ end }}
+  {{ end }}
+  {{ if not .Date.IsZero }}
+    <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{ end }}
+  {{ if not .Lastmod.IsZero }}
+    <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{ end }}
+{{ else }}
+  <meta property="og:type" content="website">
+{{ end }}
+
+{{/* 确保 OG 图片使用绝对 URL */}}
+{{ if .Params.images }}
+  {{ range first 1 .Params.images }}
+    <meta property="og:image" content="{{ . | absURL }}">
+    <meta name="twitter:image" content="{{ . | absURL }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+  {{ end }}
+{{ end }}
+
+{{/* Twitter Card 优化 */}}
+<meta name="twitter:card" content="summary_large_image">
+{{ if .Site.Params.Author.name }}
+  <meta name="twitter:site" content="@{{ .Site.Params.Author.name }}">
+  <meta name="twitter:creator" content="@{{ .Site.Params.Author.name }}">
+{{ end }}
+
+{{/* 语言和地区标签 */}}
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="zh_CN">
+
+{{/* 结构化数据 (JSON-LD) - 网站信息 */}}
+{{ if .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ .Site.Title }}",
+  "url": "{{ .Site.BaseURL }}",
+  "description": "{{ .Site.Params.description }}",
+  "inLanguage": "zh-CN",
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.Author.name }}"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "{{ .Site.BaseURL }}search?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+{{ end }}
+
+{{/* 结构化数据 - 文章信息 */}}
+{{ if and (not .IsHome) (eq .Type "posts") }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ .Title }}",
+  "url": "{{ .Permalink }}",
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ if not .Lastmod.IsZero }}
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
+  {{ end }}
+  "description": "{{ .Params.description | default (.Summary | truncate 160) | replace `"` `\"` }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.Author.name }}"
+  },
+  {{ if .Params.tags }}
+  "keywords": "{{ delimit .Params.tags ", " }}",
+  {{ end }}
+  {{ if .Params.images }}
+  "image": "{{ (index .Params.images 0) | absURL }}",
+  {{ end }}
+  "publisher": {
+    "@type": "Person",
+    "name": "{{ .Site.Params.Author.name }}"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}"
+  },
+  "articleSection": "{{ .Type }}",
+  "inLanguage": "zh-CN"
+}
+</script>
+{{ end }}
+
+{{/* Breadcrumb 结构化数据 */}}
+{{ if not .IsHome }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首页",
+      "item": "{{ .Site.BaseURL }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{ .Title }}",
+      "item": "{{ .Permalink }}"
+    }
+  ]
+}
+</script>
+{{ end }}
+

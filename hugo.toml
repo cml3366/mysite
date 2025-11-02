@@ -1,22 +1,36 @@
 baseURL = 'https://blog.cml3366.cn/'
 languageCode = 'zh-cn'
 title = '宇宙之光 × 古典之韵'
-# Updated: 2025-10-31 - Force rebuild for CDN cache refresh
+# Updated: 2025-11-02 - SEO optimization
 theme = 'blowfish'
 relativeURLs = true
 
-[menu]
-  [[menu.main]]
-    name = 'RSS'
-    url = '/index.xml'
-    weight = 5
-
+# SEO 优化配置
 [params]
   colorScheme = 'dark'
   defaultAppearance = 'dark'
   tagline = '宇宙之光 × 古典之韵'
   customCSS = ["/css/reader.css"]
   
+  # SEO 相关设置
+  description = '探索易学、哲学、量子计算与宇宙演化的深度思考。从古典智慧到现代科学，发现三态易学与量子理论的惊人共振。'
+  keywords = ['易经','易学','哲学','量子计算','三态易学','九卦体系','炁卦','天演论','宇宙演化','预测方法论','古典智慧','科学哲学','Qutrit','河图洛书']
+  robots = 'index, follow'
+  
+  # 作者信息
+  [params.Author]
+    name = 'cml3366'
+    image = '/images/author.jpg'
+  
+  # 社交媒体图片（默认）
+  defaultSocialImage = '/images/qigua-tianyan-og.svg'
+  
+  # 网站验证（如需要，后续可添加）
+  [params.verification]
+    # google = "your-google-verification-code"
+    # bing = "your-bing-verification-code"
+  
+  # 首页配置
   [params.homepage]
     layout = "background"
     showRecent = true
@@ -24,8 +38,21 @@ relativeURLs = true
     showMoreLink = true
     showMoreLinkDest = "/posts/"
 
+  # 分享配置
   [params.share]
     # 自定义二维码服务（将 {url} 替换为真实链接）。示例为 qrserver 公共服务
     qrApi = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data={url}"
     # 可选：自有短链（仅拼接，不发起后端请求），将 {url} 替换为真实链接
     shortBase = ""
+
+[menu]
+  [[menu.main]]
+    name = 'RSS'
+    url = '/index.xml'
+    weight = 5
+
+# Sitemap 配置
+[sitemap]
+  changefreq = 'weekly'
+  priority = 0.8
+  filename = 'sitemap.xml'
