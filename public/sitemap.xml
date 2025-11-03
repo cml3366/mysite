@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
-    <loc>https://example.org/</loc>
-    <lastmod>2025-10-30T12:26:44+08:00</lastmod>
-  </url><url>
-    <loc>https://example.org/posts/</loc>
-    <lastmod>2025-10-30T12:26:44+08:00</lastmod>
-  </url><url>
-    <loc>https://example.org/categories/</loc>
-  </url><url>
-    <loc>https://example.org/tags/</loc>
+    <loc>https://blog.cml3366.cn/posts/</loc>
+    <lastmod>2025-11-02T10:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://blog.cml3366.cn/posts/xin-yi-quantum/</loc>
+    <lastmod>2025-11-02T10:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://blog.cml3366.cn/</loc>
+    <lastmod>2025-11-02T10:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://blog.cml3366.cn/posts/qidao/</loc>
+    <lastmod>2025-10-31T16:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://blog.cml3366.cn/posts/qigua-tianyan/</loc>
+    <lastmod>2025-10-31T12:00:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://blog.cml3366.cn/posts/qianzhi/</loc>
+    <lastmod>2025-10-30T16:04:59+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
