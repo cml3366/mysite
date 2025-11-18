@@ -1,8 +1,8 @@
 +++
-title = '炁卦天演论'
+title = '炁卦天演论：宇宙演化的易学诠释与九宫体系'
 date = '2025-10-31T12:00:00+08:00'
 draft = false
-slug = 'qigua-tianyan'
+slug = 'qigua-tianyan-yuzhou-yanhua'
 tags = ['炁卦','天演论','九卦体系','哲学','宇宙演化','易经']
 description = '以天演论与易学合参，阐述炁卦作为宇宙演化枢纽的深意：从混沌未开到生万类，揭示九宫九卦对应宇宙演化各阶段的完整图景，探讨宿命与自由的辩证统一。'
 images = ['/images/qigua-tianyan-og.svg']
