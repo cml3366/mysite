@@ -1,0 +1,55 @@
+{{/* 文章结构化数据 (JSON-LD) - 用于搜索引擎优化 */}}
+{{ if and (eq .Kind "page") (not .IsHome) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ .Title | jsonify }},
+  "description": {{ (.Params.Description | default .Summary) | jsonify }},
+  {{ if .Params.images }}
+  "image": [
+    {{ range $index, $img := .Params.images }}
+      {{ if $index }},{{ end }}
+      {{ if strings.HasPrefix $img "http" }}
+        {{ $img | jsonify }}
+      {{ else }}
+        {{ ($img | absURL) | jsonify }}
+      {{ end }}
+    {{ end }}
+  ],
+  {{ else if .Site.Params.defaultSocialImage }}
+  "image": [
+    {{ (.Site.Params.defaultSocialImage | absURL) | jsonify }}
+  ],
+  {{ end }}
+  "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  {{ if .Lastmod }}
+  "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  {{ else }}
+  "dateModified": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
+  {{ end }}
+  "author": {
+    "@type": "Person",
+    "name": {{ (.Site.Params.Author.name | default "cml3366") | jsonify }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": {{ .Site.Title | jsonify }},
+    "logo": {
+      "@type": "ImageObject",
+      "url": {{ (.Site.Params.defaultSocialImage | default "/images/qigua-tianyan-og.svg" | absURL) | jsonify }}
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ .Permalink | jsonify }}
+  },
+  {{ if .Params.tags }}
+  "keywords": {{ (.Params.tags | join ", ") | jsonify }},
+  {{ end }}
+  "articleSection": {{ (index .Params.tags 0 | default "易学") | jsonify }},
+  "inLanguage": {{ (.Site.LanguageCode | default "zh-cn") | jsonify }}
+}
+</script>
+{{ end }}
+

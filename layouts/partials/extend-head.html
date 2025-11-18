@@ -1,7 +1,19 @@
 {{/* SEO 增强标签 - 在主题默认 head 后添加 */}}
-{{/* 注意：此文件接收的是 .Site 对象，不是页面对象 */}}
-
-{{/* Google Search Console 验证标签 - 直接添加确保验证成功 */}}
+{{/* Google Search Console 验证标签 */}}
 <meta name="google-site-verification" content="OFOCuMjsQOrC4krVPhVmMwafh1PhfGFDOBgu947m2ns" />
 
-{{/* 其他 SEO 标签已在主题的 head.html 中处理，这里只添加验证标签 */}}
+{{/* 站点级别的结构化数据 (Organization) */}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": {{ .Site.Title | jsonify }},
+  "url": {{ .Site.BaseURL | jsonify }},
+  "description": {{ (.Site.Params.description | default "探索易学、哲学、量子计算与宇宙演化的深度思考") | jsonify }},
+  "inLanguage": {{ (.Site.LanguageCode | default "zh-cn") | jsonify }},
+  "publisher": {
+    "@type": "Person",
+    "name": {{ (.Site.Params.Author.name | default "cml3366") | jsonify }}
+  }
+}
+</script>
