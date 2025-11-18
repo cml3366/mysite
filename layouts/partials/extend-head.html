@@ -3,17 +3,18 @@
 <meta name="google-site-verification" content="OFOCuMjsQOrC4krVPhVmMwafh1PhfGFDOBgu947m2ns" />
 
 {{/* 站点级别的结构化数据 (Organization) */}}
+{{- $site := . -}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": {{ .Site.Title | jsonify }},
-  "url": {{ .Site.BaseURL | jsonify }},
-  "description": {{ (.Site.Params.description | default "探索易学、哲学、量子计算与宇宙演化的深度思考") | jsonify }},
-  "inLanguage": {{ (.Site.LanguageCode | default "zh-cn") | jsonify }},
+  "name": {{ $site.Title | jsonify }},
+  "url": {{ $site.BaseURL | jsonify }},
+  "description": {{ ($site.Params.description | default "探索易学、哲学、量子计算与宇宙演化的深度思考") | jsonify }},
+  "inLanguage": {{ ($site.LanguageCode | default "zh-cn") | jsonify }},
   "publisher": {
     "@type": "Person",
-    "name": {{ (.Site.Params.Author.name | default "cml3366") | jsonify }}
+    "name": {{ ($site.Params.Author.name | default "cml3366") | jsonify }}
   }
 }
 </script>
