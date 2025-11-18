@@ -30,9 +30,6 @@ relativeURLs = true
     google = "OFOCuMjsQOrC4krVPhVmMwafh1PhfGFDOBgu947m2ns"
     # bing = "your-bing-verification-code"
   
-  # 主要内容板块
-  mainSections = ["posts"]
-  
   # 首页配置
   [params.homepage]
     layout = "background"
@@ -47,6 +44,9 @@ relativeURLs = true
     qrApi = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data={url}"
     # 可选：自有短链（仅拼接，不发起后端请求），将 {url} 替换为真实链接
     shortBase = ""
+
+# 主要内容板块（必须在 [params] 外面）
+mainSections = ["posts"]
 
 [menu]
   [[menu.main]]
