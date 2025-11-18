@@ -51,6 +51,10 @@ relativeURLs = true
     url = '/index.xml'
     weight = 5
 
+# 分页配置
+[pagination]
+  pagerSize = 20
+
 # Sitemap 配置
 [sitemap]
   changefreq = 'weekly'
