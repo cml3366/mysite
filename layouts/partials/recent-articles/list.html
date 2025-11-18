@@ -1,5 +1,7 @@
-{{ $recentArticles := 5 }}
-{{ $recentArticles = .Site.Params.homepage.showRecentItems }}
+{{ $recentArticles := 10 }}
+{{ if index .Site.Params.homepage "showRecentItems" }}
+  {{ $recentArticles = .Site.Params.homepage.showRecentItems }}
+{{ end }}
 
 {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
 {{ $pages = $pages | first $recentArticles }}

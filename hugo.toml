@@ -34,7 +34,7 @@ relativeURLs = true
   [params.homepage]
     layout = "background"
     showRecent = true
-    showRecentItems = 10
+    showRecentItems = 20
     showMoreLink = true
     showMoreLinkDest = "/posts/"
 
