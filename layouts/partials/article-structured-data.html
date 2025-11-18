@@ -45,7 +45,7 @@
     "@id": {{ .Permalink | jsonify }}
   },
   {{ if .Params.tags }}
-  "keywords": {{ (.Params.tags | join ", ") | jsonify }},
+  "keywords": {{ (.Params.tags | delimit ", ") | jsonify }},
   {{ end }}
   "articleSection": {{ (index .Params.tags 0 | default "易学") | jsonify }},
   "inLanguage": {{ (.Site.LanguageCode | default "zh-cn") | jsonify }}
