@@ -30,6 +30,9 @@ relativeURLs = true
     google = "OFOCuMjsQOrC4krVPhVmMwafh1PhfGFDOBgu947m2ns"
     # bing = "your-bing-verification-code"
   
+  # 主要内容板块
+  mainSections = ["posts"]
+  
   # 首页配置
   [params.homepage]
     layout = "background"
