@@ -56,7 +56,7 @@ mainSections = ["posts"]
 
 # 分页配置
 [pagination]
-  pagerSize = 20
+  pagerSize = 50
 
 # Sitemap 配置
 [sitemap]
