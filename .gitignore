@@ -1,0 +1,38 @@
+# Hugo 构建输出
+/public/
+/resources/_gen/
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# IDE 文件
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# 日志文件
+*.log
+
+# 环境变量文件
+.env
+.env.local
+
+# Node modules (如果使用)
+node_modules/
+
+# 备份文件
+*.backup
+backup/
+
+# 本地测试文件
+test/
+local/
+
