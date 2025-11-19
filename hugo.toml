@@ -5,6 +5,10 @@ title = '宇宙之光 × 古典之韵'
 theme = 'blowfish'
 relativeURLs = true
 
+# 构建配置 - 允许构建未来日期的文章
+buildFuture = true
+buildDrafts = false
+
 # SEO 优化配置
 [params]
   colorScheme = 'dark'
