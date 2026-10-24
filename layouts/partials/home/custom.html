@@ -3,7 +3,12 @@
 
 <section class="sk-hero">
   <div class="sk-hero-inner">
-    <h1 class="sk-hero-title sk-serif">{{ site.Title }}</h1>
+    {{/* 站名只在「×」处换行，避免手机上把「古典之韵」拆开 */}}
+    <h1 class="sk-hero-title sk-serif">
+      {{- range $i, $part := split site.Title " × " -}}
+        {{ if $i }} <span class="sk-times">×</span> {{ end }}<span class="sk-nowrap">{{ $part }}</span>
+      {{- end -}}
+    </h1>
     <p class="sk-hero-sub sk-serif">从古典智慧到量子科学</p>
     {{ with site.Params.description }}<p class="sk-hero-desc">{{ . }}</p>{{ end }}
     <div class="sk-hero-actions">

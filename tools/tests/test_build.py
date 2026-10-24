@@ -133,6 +133,18 @@ class TestArticle(unittest.TestCase):
         self.assertTrue(post('qidao').select('div', 'sk-article'))
 
 
+class TestTypography(unittest.TestCase):
+    def test_hero_title_breaks_only_at_times_sign(self):
+        parts = [s.text for s in page('index.html').select('span', 'sk-nowrap')]
+        self.assertEqual(parts[:2], ['宇宙之光', '古典之韵'])
+
+    def test_article_meta_in_chinese(self):
+        h = post('qidao')
+        head = next(n for n in h.nodes if n.attrs.get('id') == 'single_header').text
+        self.assertIn('2025年11月19日', head)
+        self.assertNotIn('words', head)
+
+
 class TestLists(unittest.TestCase):
     def test_posts_lists_all(self):
         self.assertEqual(len(page('posts/index.html').select('a', 'sk-row')), len(published()))

@@ -1,5 +1,8 @@
 baseURL = 'https://blog.cml3366.cn/'
 languageCode = 'zh-cn'
+defaultContentLanguage = 'zh-cn'
+# 中文按字计数，否则字数与阅读时长会严重偏小
+hasCJKLanguage = true
 title = '宇宙之光 × 古典之韵'
 # Updated: 2025-11-02 - SEO optimization
 theme = 'blowfish'
@@ -13,6 +16,8 @@ buildDrafts = false
 [params]
   colorScheme = 'shenkong'
   defaultAppearance = 'dark'
+  # 文章日期用中文格式（主题默认 :date_long 在本站输出为英文）
+  dateFormat = '2006年1月2日'
   tagline = '宇宙之光 × 古典之韵'
   
   # SEO 相关设置

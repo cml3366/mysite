@@ -115,7 +115,7 @@ html:not(.dark) .sk-hero {
 }
 
 .sk-hero-inner {
-  min-height: 60vh;
+  min-height: min(60vh, 560px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,7 +126,7 @@ html:not(.dark) .sk-hero {
 
 .sk-hero-title {
   margin: 0;
-  font-size: clamp(2rem, 6vw, 3.4rem);
+  font-size: clamp(1.75rem, 7vw, 3.4rem);
   font-weight: 600;
   letter-spacing: .14em;
   color: var(--sk-gold);
@@ -431,4 +431,13 @@ html:not(.dark) .sk-row-title {
 
 .sk-list-count a {
   color: var(--sk-gold);
+}
+
+.sk-nowrap {
+  white-space: nowrap;
+}
+
+.sk-times {
+  font-weight: 400;
+  opacity: .75;
 }
