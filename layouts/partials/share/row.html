@@ -1,0 +1,22 @@
+{{/* 一排分享图标。参数：dict "variant" "footer"|"article"|"dialog"。
+     链接由 assets/js/share.js 按当前页面地址填入（页脚是 partialCached，不能在服务端写死页面地址） */}}
+{{ $targets := slice
+  (dict "key" "wechat" "icon" "wechat" "label" "微信")
+  (dict "key" "weibo" "icon" "sinaweibo" "label" "微博")
+  (dict "key" "qzone" "icon" "qq" "label" "QQ空间")
+  (dict "key" "zhihu" "icon" "zhihu" "label" "知乎")
+  (dict "key" "x" "icon" "x-twitter" "label" "X")
+  (dict "key" "facebook" "icon" "facebook" "label" "Facebook")
+  (dict "key" "telegram" "icon" "telegram" "label" "Telegram")
+  (dict "key" "copy" "icon" "link" "label" "复制链接")
+}}
+<div class="sk-share sk-share-{{ .variant }}">
+  {{ range $targets }}
+    <a class="sk-share-btn" href="#" data-share="{{ .key }}" title="{{ .label }}" aria-label="{{ .label }}" rel="noopener">
+      {{ partial "icon.html" .icon }}<span class="sk-share-label">{{ .label }}</span>
+    </a>
+  {{ end }}
+  <a class="sk-share-btn" href="{{ "index.xml" | relURL }}" data-share="rss" title="RSS 订阅" aria-label="RSS 订阅">
+    {{ partial "icon.html" "rss" }}<span class="sk-share-label">RSS</span>
+  </a>
+</div>

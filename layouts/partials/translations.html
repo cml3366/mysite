@@ -1,0 +1,42 @@
+{{/* 覆盖主题的 translations.html：主题在页眉的桌面导航与手机工具栏各调用它一次（本站单语言，原内容不输出），
+     借此在两处放分享按钮。先渲染桌面、后渲染手机，用页面级计数区分两个按钮的 id。以下第一段为主题原文 */}}
+{{ if .IsTranslated }}
+  <div>
+    <div class="cursor-pointer flex items-center nested-menu">
+      <span class="me-1">
+        {{ partial "icon.html" "language" }}
+      </span>
+      <div
+        class="text-sm font-medium hover:text-primary-600 dark:hover:text-primary-400"
+        title="{{ .Title }}">
+        {{- i18n "global.language" | markdownify -}}
+      </div>
+    </div>
+    <div class="absolute menuhide">
+      <div class="pt-2 p-5 mt-2 rounded-xl backdrop-blur shadow-2xl">
+        <div class="flex flex-col space-y-3">
+          {{ range .AllTranslations }}
+            <a href="{{ .RelPermalink }}" class="flex items-center">
+              <p
+                class="text-sm font-sm hover:text-primary-600 dark:hover:text-primary-400"
+                title="{{ .Title }}">
+                {{ .Language.Params.displayName | emojify }}
+              </p>
+            </a>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ .Store.Add "skShareButton" 1 }}
+{{ $suffix := cond (eq (mod (.Store.Get "skShareButton") 2) 1) "" "-mobile" }}
+<button
+  type="button"
+  id="share-button{{ $suffix }}"
+  class="sk-share-open text-base hover:text-primary-600 dark:hover:text-primary-400"
+  aria-label="分享本页"
+  title="分享本页">
+  {{ partial "icon.html" "share" }}
+</button>

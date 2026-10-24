@@ -1,0 +1,24 @@
+{{/* Blowfish 页脚钩子（partialCached，全站只渲染一次）：页脚分享行、分享弹窗与分享脚本 */}}
+<div class="sk-footer-share">
+  <span class="sk-footer-share-title">分享本页</span>
+  {{ partial "share/row.html" (dict "variant" "footer") }}
+</div>
+
+<div id="sk-share-mask" class="sk-share-mask" hidden></div>
+<div id="sk-share-modal" class="sk-share-modal" role="dialog" aria-modal="true" aria-labelledby="sk-share-heading" hidden>
+  <button type="button" id="sk-share-close" class="sk-share-close" aria-label="关闭">{{ partial "icon.html" "xmark" }}</button>
+  <h2 id="sk-share-heading" class="sk-serif">分享本页</h2>
+  {{ partial "share/row.html" (dict "variant" "dialog") }}
+  <div class="sk-share-qr">
+    <img id="sk-share-qr" alt="当前页面二维码" width="180" height="180" loading="lazy">
+    <p>微信、朋友圈、小红书等 App 扫码后转发</p>
+  </div>
+  <p class="sk-share-url"><span id="sk-share-url"></span></p>
+</div>
+
+{{ $js := resources.Get "js/share.js" | resources.Minify | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
+<script
+  src="{{ $js.RelPermalink }}"
+  integrity="{{ $js.Data.Integrity }}"
+  data-qr-api="{{ site.Params.share.qrApi | default "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data={url}" }}"
+  defer></script>
