@@ -33,6 +33,17 @@ class TestStyles(unittest.TestCase):
         raw = page('index.html').raw
         self.assertFalse('fonts.googleapis' in raw or 'fonts.gstatic' in raw, '加载了网络字体')
 
+    def test_light_mode_blue_and_outline_button_contrast(self):
+        c = css()
+        self.assertTrue(re.search(r'html:not\(\.dark\)\{[^}]*--sk-blue:rgb\(var\(--color-secondary-700\)\)', c),
+                        '浅色模式缺少 --sk-blue 覆盖')
+        self.assertTrue(re.search(r'html:not\(\.dark\) \.sk-btn\{[^}]*--color-primary-800', c),
+                        '浅色模式描边按钮未加深')
+
+    def test_serif_stack_latin_first(self):
+        # 宋体自带的西文是等宽字形，英文需先落到 Georgia
+        self.assertTrue(re.search(r'--sk-serif:Georgia,', css()), '标题字体栈未以西文衬线体开头')
+
     def test_light_mode_uses_dark_gold(self):
         self.assertTrue(re.search(r'html:not\(\.dark\)[^{]*\.sk-', css()), '缺少浅色模式覆盖')
 
@@ -108,6 +119,17 @@ class TestArticle(unittest.TestCase):
         h = post('superconducting-qutrit')
         self.assertTrue(h.select('blockquote'))
         self.assertEqual(len(h.select('h1', 'sk-dup-title')), 1)
+
+    def test_distinct_body_titles_stay_visible(self):
+        # 正文 h1 与页面标题不同（英文论文名、另一副题），不能隐藏
+        for stem in ('badao-jiugua-san-tai-yongxian', 'qigua-tianyan'):
+            self.assertEqual(post(stem).select('h1', 'sk-dup-title'), [], stem)
+
+    def test_bracketed_same_title_is_hidden(self):
+        # 《前知》与标题「前知」只差书名号，属重复
+        self.assertEqual(len(post('uploaded-article').select('h1', 'sk-dup-title')), 1)
+        # 「意识/灵魂…」与「意识与灵魂…」只差一字，也属重复
+        self.assertEqual(len(post('consciousness-quantum-xinyi').select('h1', 'sk-dup-title')), 1)
 
     def test_body_without_h1_has_no_dup_mark(self):
         h = post('weitegensitan-zhexue-yanjiu-liubian-buju')

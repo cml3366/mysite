@@ -47,9 +47,31 @@
 
       <div class="min-w-0 min-h-0 max-w-fit">
         {{ partial "series/series.html" . }}
-        {{/* 正文第一个 h2 之前的 h1 是文章自带的标题，与页头重复，加 sk-dup-title 由 CSS 隐藏 */}}
+        {{/* 正文第一个 h2 之前的 h1 若与页头标题重复，加 sk-dup-title 由 CSS 隐藏。
+             去掉标点、书名号与空白后，掐掉两者相同的开头和结尾，中间各剩不超过 2 字即算重复
+             （如「开端」与「开启」、「意识/灵魂」与「意识与灵魂」）；英文论文名、另起的副题照常显示 */}}
         {{ $content := string .Content }}
-        {{ if in (index (split $content "<h2") 0) "<h1" }}
+        {{ $isDup := false }}
+        {{ with index (findRESubmatch `<h1[^>]*>([\s\S]*?)</h1>` (index (split $content "<h2") 0) 1) 0 }}
+          {{ $strip := `[\p{P}\p{S}\s]` }}
+          {{ $a := split (replaceRE $strip "" (index . 1 | plainify | htmlUnescape)) "" }}
+          {{ $b := split (replaceRE $strip "" $.Title) "" }}
+          {{ $la := len $a }}
+          {{ $lb := len $b }}
+          {{ $min := cond (lt $la $lb) $la $lb }}
+          {{ $pre := 0 }}
+          {{ range $i := seq 0 (sub $min 1) }}
+            {{ if ne (index $a $i) (index $b $i) }}{{ break }}{{ end }}
+            {{ $pre = add $i 1 }}
+          {{ end }}
+          {{ $suf := 0 }}
+          {{ range $i := seq 1 (sub $min $pre) }}
+            {{ if ne (index $a (sub $la $i)) (index $b (sub $lb $i)) }}{{ break }}{{ end }}
+            {{ $suf = $i }}
+          {{ end }}
+          {{ $isDup = and (ge $min 2) (le (sub (sub $la $pre) $suf) 2) (le (sub (sub $lb $pre) $suf) 2) }}
+        {{ end }}
+        {{ if $isDup }}
           {{ if in (index (split $content "<h2") 0) `<h1 class="` }}
             {{ $content = replaceRE `<h1 class="` `<h1 class="sk-dup-title ` $content 1 }}
           {{ else }}

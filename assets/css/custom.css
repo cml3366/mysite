@@ -1,7 +1,7 @@
 /* 深空星图：Blowfish 之上的覆盖样式。主题的 Tailwind 是预编译的，新模板的布局一律写在这里的 sk-* 类中 */
 
 :root {
-  --sk-serif: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+  --sk-serif: Georgia, "Times New Roman", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
   --sk-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
   --sk-gold: rgb(var(--color-primary-300));
   --sk-gold-hover: rgb(var(--color-primary-500));
@@ -15,6 +15,7 @@ html:not(.dark) {
   --sk-gold: rgb(var(--color-primary-700));
   --sk-gold-hover: rgb(var(--color-primary-800));
   --sk-muted: rgb(var(--color-neutral-600));
+  --sk-blue: rgb(var(--color-secondary-700));
   --sk-card-bg: rgba(255, 255, 255, .7);
   --sk-card-border: rgba(138, 106, 36, .25);
 }
@@ -187,6 +188,11 @@ html:not(.dark) .sk-hero-sub {
   border-color: var(--sk-gold-hover);
 }
 
+/* 浅色主视觉底上，描边按钮用更深的金色保证对比度 */
+html:not(.dark) .sk-btn {
+  color: rgb(var(--color-primary-800));
+}
+
 html:not(.dark) .sk-btn-primary {
   color: #fffdf8;
 }
@@ -316,6 +322,13 @@ html:not(.dark) .sk-row-title {
 .sk-article .article-content h3 {
   color: var(--sk-gold);
   letter-spacing: .04em;
+}
+
+/* 正文里与页头不同的 h1（英文论文名、副题）按副标题处理 */
+.sk-article .article-content h1 {
+  font-size: 1.55em;
+  line-height: 1.45;
+  margin-top: 0;
 }
 
 .sk-article .article-content h2::before {
