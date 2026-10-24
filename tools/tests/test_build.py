@@ -200,5 +200,68 @@ class TestLists(unittest.TestCase):
         self.assertEqual(bad, [])
 
 
+SHARE_TARGETS = ['wechat', 'weibo', 'qzone', 'zhihu', 'x', 'facebook', 'telegram', 'copy', 'rss']
+SHARE_PAGES = ['index.html', 'posts/index.html', 'categories/index.html', 'tags/qutrit/index.html']
+
+
+def share_targets(node):
+    return [n.attrs.get('data-share') for n in node.children if n.attrs.get('data-share')] + \
+        [t for c in node.children for t in share_targets(c)]
+
+
+class TestShare(unittest.TestCase):
+    def test_brand_icons_installed(self):
+        for name in ('wechat', 'sinaweibo', 'qq', 'zhihu'):
+            svg = (ROOT / f'assets/icons/{name}.svg').read_text(encoding='utf-8')
+            self.assertIn('fill="currentColor"', svg, name)
+            self.assertNotIn('<script', svg, name)
+
+    def test_header_share_buttons_on_every_kind_of_page(self):
+        for rel in SHARE_PAGES + ['posts/qidao-jiugua-san-tai-yixue/index.html']:
+            ids = [n.attrs.get('id') for n in page(rel).select('button')]
+            self.assertIn('share-button', ids, rel)
+            self.assertIn('share-button-mobile', ids, rel)
+
+    def test_footer_share_row_has_all_targets(self):
+        for rel in SHARE_PAGES:
+            rows = [n for n in page(rel).select('div', 'sk-share') if 'sk-share-footer' in n.classes]
+            self.assertEqual(len(rows), 1, rel)
+            self.assertEqual(share_targets(rows[0]), SHARE_TARGETS, rel)
+
+    def test_footer_share_row_is_inside_footer(self):
+        footer = page('index.html').select('footer')[0]
+        self.assertIn('sk-share-footer', ' '.join(' '.join(n.classes) for n in self._walk(footer)))
+
+    def _walk(self, node):
+        yield node
+        for c in node.children:
+            yield from self._walk(c)
+
+    def test_article_end_uses_icon_row(self):
+        h = post('qidao')
+        ends = [n for n in h.select('div', 'sk-share') if 'sk-share-article' in n.classes]
+        self.assertEqual(len(ends), 1)
+        self.assertEqual(share_targets(ends[0]), SHARE_TARGETS)
+        self.assertFalse('btn-share' in h.raw, '旧的文字分享按钮仍在')
+
+    def test_single_modal_and_unique_ids(self):
+        for rel in ['index.html', 'posts/qidao-jiugua-san-tai-yixue/index.html']:
+            h = page(rel)
+            self.assertEqual(len([n for n in h.nodes if n.attrs.get('id') == 'sk-share-modal']), 1, rel)
+            # 主题目录组件本身会输出两份 TableOfContents，这里只查分享相关的 id
+            ids = [n.attrs['id'] for n in h.nodes if 'share' in (n.attrs.get('id') or '')]
+            self.assertEqual([i for i in set(ids) if ids.count(i) > 1], [], rel)
+
+    def test_modal_class_used_only_by_dialog_container(self):
+        # 弹窗里那一排图标不能沿用弹窗容器的类名，否则会被一起定位到屏幕中央
+        h = page('index.html')
+        self.assertEqual([n.attrs.get('id') for n in h.nodes if 'sk-share-modal' in n.classes], ['sk-share-modal'])
+
+    def test_share_script_loaded_with_integrity(self):
+        scripts = [n for n in page('index.html').select('script') if 'share' in (n.attrs.get('src') or '')]
+        self.assertEqual(len(scripts), 1)
+        self.assertTrue(scripts[0].attrs.get('integrity'))
+
+
 if __name__ == '__main__':
     unittest.main()

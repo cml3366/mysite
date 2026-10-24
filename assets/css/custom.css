@@ -397,16 +397,169 @@ html:not(.dark) .sk-row-title {
   color: var(--sk-gold);
 }
 
-/* share.html 带内联样式，只能用 !important 覆盖成深空配色 */
-.post-share {
-  border-top-color: var(--sk-card-border) !important;
+/* ---------- 分享（页眉按钮、页脚行、文章末尾、弹窗） ---------- */
+
+.sk-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
 }
 
-.post-share .btn-share {
-  border: 1px solid var(--sk-card-border) !important;
-  background: transparent !important;
-  color: var(--sk-gold) !important;
-  border-radius: 999px !important;
+.sk-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem .75rem;
+  border: 1px solid var(--sk-card-border);
+  border-radius: 999px;
+  color: var(--sk-gold);
+  font-size: .82rem;
+  line-height: 1.4;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s, border-color .2s;
+}
+
+.sk-share-btn:hover,
+.sk-share-btn.is-done {
+  border-color: var(--sk-gold);
+  background: rgba(243, 213, 139, .08);
+}
+
+.sk-share-btn .icon svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* 页脚只显示图标，文字作为悬停提示与读屏文字 */
+.sk-share-footer .sk-share-btn {
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  justify-content: center;
+}
+
+.sk-share-footer .sk-share-btn:not(.is-done) .sk-share-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.sk-share-footer .sk-share-btn.is-done {
+  width: auto;
+  padding: 0 .75rem;
+}
+
+/* 页脚：分享行放在版权信息上方 */
+#site-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sk-footer-share {
+  order: -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--sk-card-border);
+}
+
+.sk-footer-share-title,
+.sk-share-title {
+  font-family: var(--sk-serif);
+  letter-spacing: .1em;
+  color: var(--sk-muted);
+  font-size: .9rem;
+}
+
+.post-share {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+  max-width: 40rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--sk-card-border);
+}
+
+.sk-share-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(6, 9, 20, .6);
+  backdrop-filter: blur(4px);
+}
+
+.sk-share-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 61;
+  width: min(26rem, calc(100vw - 2rem));
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  transform: translate(-50%, -50%);
+  padding: 1.5rem 1.25rem 1.25rem;
+  border: 1px solid var(--sk-card-border);
+  border-radius: 1rem;
+  background: rgb(var(--color-neutral-800));
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .45);
+}
+
+html:not(.dark) .sk-share-modal {
+  background: rgb(var(--color-neutral-50));
+}
+
+.sk-share-modal[hidden],
+.sk-share-mask[hidden] {
+  display: none;
+}
+
+.sk-share-modal h2 {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  letter-spacing: .12em;
+  color: var(--sk-gold);
+}
+
+.sk-share-close {
+  position: absolute;
+  top: .9rem;
+  right: .9rem;
+  color: var(--sk-muted);
+}
+
+.sk-share-close:hover {
+  color: var(--sk-gold);
+}
+
+.sk-share-qr {
+  margin-top: 1.25rem;
+  text-align: center;
+}
+
+.sk-share-qr img {
+  display: block;
+  margin: 0 auto;
+  padding: .5rem;
+  border-radius: .6rem;
+  background: #fff;
+}
+
+.sk-share-qr p,
+.sk-share-url {
+  margin-top: .6rem;
+  font-size: .8rem;
+  color: var(--sk-muted);
+  word-break: break-all;
+  text-align: center;
 }
 
 .sk-related {
