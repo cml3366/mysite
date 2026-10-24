@@ -4,6 +4,7 @@ date = '2026-10-24T10:50:00+08:00'
 draft = false
 slug = 'personality-81-quantum'
 tags = ['新易', '八十一卦', '量子力学', '性格', 'Qutrit']
+categories = ['量子与易学']
 description = '用八十一卦与四 qutrit 的 81 态，讨论八字藏干、性格叠加，以及岁运显现时的状态选择。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

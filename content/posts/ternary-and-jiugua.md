@@ -4,6 +4,7 @@ date = '2026-10-24T12:20:00+08:00'
 draft = false
 slug = 'ternary-and-jiugua'
 tags = ['三进制', '九卦', '新易', '八十一卦', '太玄']
+categories = ['三进制与九卦']
 description = '区分周易八卦的二进制和八个卦，与新易加上炁卦之后的九卦、八十一卦。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

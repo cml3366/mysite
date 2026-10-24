@@ -1,0 +1,456 @@
+/* 深空星图：Blowfish 之上的覆盖样式。主题的 Tailwind 是预编译的，新模板的布局一律写在这里的 sk-* 类中 */
+
+:root {
+  --sk-serif: Georgia, "Times New Roman", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+  --sk-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --sk-gold: rgb(var(--color-primary-300));
+  --sk-gold-hover: rgb(var(--color-primary-500));
+  --sk-blue: rgb(var(--color-secondary-400));
+  --sk-muted: rgb(var(--color-neutral-400));
+  --sk-card-bg: rgba(255, 255, 255, .05);
+  --sk-card-border: rgba(243, 213, 139, .25);
+}
+
+html:not(.dark) {
+  --sk-gold: rgb(var(--color-primary-700));
+  --sk-gold-hover: rgb(var(--color-primary-800));
+  --sk-muted: rgb(var(--color-neutral-600));
+  --sk-blue: rgb(var(--color-secondary-700));
+  --sk-card-bg: rgba(255, 255, 255, .7);
+  --sk-card-border: rgba(138, 106, 36, .25);
+}
+
+/* ---------- 全局 ---------- */
+
+body {
+  font-family: var(--sk-sans);
+}
+
+h1, h2, h3, .sk-serif {
+  font-family: var(--sk-serif);
+}
+
+.sk-serif {
+  letter-spacing: .08em;
+}
+
+.dark body {
+  background-image: linear-gradient(180deg, rgba(27, 42, 82, .35), transparent 320px);
+  background-repeat: no-repeat;
+}
+
+/* ---------- 通用组件 ---------- */
+
+.sk-card {
+  display: block;
+  background: var(--sk-card-bg);
+  border: 1px solid var(--sk-card-border);
+  border-radius: .75rem;
+  transition: border-color .2s, transform .2s;
+}
+
+a.sk-card:hover {
+  border-color: var(--sk-gold);
+  transform: translateY(-2px);
+}
+
+.sk-tag {
+  display: inline-block;
+  padding: .05rem .55rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  line-height: 1.5;
+  color: var(--sk-gold);
+  background: rgba(243, 213, 139, .12);
+  white-space: nowrap;
+}
+
+html:not(.dark) .sk-tag {
+  background: rgba(138, 106, 36, .1);
+}
+
+.sk-row {
+  display: block;
+  padding: .9rem 1rem;
+  border-radius: .6rem;
+  border-bottom: 1px dashed rgba(243, 213, 139, .14);
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.sk-row:hover {
+  background: rgba(243, 213, 139, .06);
+}
+
+html:not(.dark) .sk-row {
+  border-bottom-color: rgba(138, 106, 36, .18);
+}
+
+/* ---------- 首页主视觉 ---------- */
+
+.sk-hero {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background:
+    radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, .8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 68%, rgba(255, 255, 255, .6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 47% 18%, rgba(255, 255, 255, .7) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 83% 62%, #ffd98a 50%, transparent 51%),
+    radial-gradient(1px 1px at 66% 82%, rgba(255, 255, 255, .5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 92% 14%, rgba(255, 255, 255, .7) 50%, transparent 51%),
+    repeating-linear-gradient(0deg, rgba(243, 213, 139, .04) 0 1px, transparent 1px 33.33%),
+    repeating-linear-gradient(90deg, rgba(243, 213, 139, .04) 0 1px, transparent 1px 33.33%),
+    radial-gradient(ellipse at 70% 0%, #1b2a52, #0a0f1f 60%);
+}
+
+html:not(.dark) .sk-hero {
+  background:
+    radial-gradient(1px 1px at 12% 22%, rgba(138, 106, 36, .5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 47% 18%, rgba(138, 106, 36, .4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 83% 62%, rgba(138, 106, 36, .6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 66% 82%, rgba(138, 106, 36, .35) 50%, transparent 51%),
+    repeating-linear-gradient(0deg, rgba(138, 106, 36, .05) 0 1px, transparent 1px 33.33%),
+    repeating-linear-gradient(90deg, rgba(138, 106, 36, .05) 0 1px, transparent 1px 33.33%),
+    linear-gradient(160deg, #f5f0e6, #ebe3d0);
+}
+
+.sk-hero-inner {
+  min-height: min(60vh, 560px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.25rem;
+}
+
+.sk-hero-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 7vw, 3.4rem);
+  font-weight: 600;
+  letter-spacing: .14em;
+  color: var(--sk-gold);
+  text-shadow: 0 0 24px rgba(243, 213, 139, .25);
+}
+
+.sk-hero-sub {
+  margin: 1rem 0 0;
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  letter-spacing: .3em;
+  color: rgb(var(--color-neutral-300));
+}
+
+html:not(.dark) .sk-hero-sub {
+  color: rgb(var(--color-neutral-700));
+}
+
+.sk-hero-desc {
+  max-width: 34rem;
+  margin: 1.25rem auto 0;
+  font-size: .95rem;
+  line-height: 1.8;
+  color: var(--sk-muted);
+}
+
+.sk-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: 2rem;
+}
+
+.sk-btn {
+  display: inline-block;
+  padding: .55rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--sk-card-border);
+  color: var(--sk-gold);
+  font-size: .95rem;
+  text-decoration: none;
+  transition: background .2s, border-color .2s;
+}
+
+.sk-btn:hover {
+  border-color: var(--sk-gold);
+  background: rgba(243, 213, 139, .08);
+}
+
+.sk-btn-primary {
+  background: var(--sk-gold);
+  border-color: var(--sk-gold);
+  color: #0a0f1f;
+}
+
+.sk-btn-primary:hover {
+  background: var(--sk-gold-hover);
+  border-color: var(--sk-gold-hover);
+}
+
+/* 浅色主视觉底上，描边按钮用更深的金色保证对比度 */
+html:not(.dark) .sk-btn {
+  color: rgb(var(--color-primary-800));
+}
+
+html:not(.dark) .sk-btn-primary {
+  color: #fffdf8;
+}
+
+@media (max-width: 640px) {
+  .sk-hero-inner {
+    min-height: auto;
+    padding: 3.5rem 1rem;
+  }
+}
+
+/* ---------- 首页分区 ---------- */
+
+.sk-section {
+  margin-top: 3rem;
+}
+
+.sk-section-title {
+  margin: 0 0 1.1rem;
+  font-size: 1.35rem;
+  letter-spacing: .12em;
+  color: var(--sk-gold);
+}
+
+.sk-topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .9rem;
+}
+
+@media (min-width: 1024px) {
+  .sk-topics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.sk-topic {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+  padding: 1.1rem 1.15rem;
+  text-decoration: none;
+}
+
+.sk-topic-name {
+  font-size: 1.15rem;
+  color: var(--sk-gold);
+}
+
+.sk-topic-desc-short {
+  font-size: .85rem;
+  line-height: 1.6;
+  color: var(--sk-muted);
+}
+
+.sk-count {
+  margin-top: auto;
+  padding-top: .35rem;
+  font-size: .78rem;
+  color: var(--sk-blue);
+}
+
+.sk-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.sk-row-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .3rem .9rem;
+}
+
+.sk-row-title {
+  font-size: 1.08rem;
+  color: rgb(var(--color-neutral-300));
+  letter-spacing: .02em;
+}
+
+html:not(.dark) .sk-row-title {
+  color: rgb(var(--color-neutral-900));
+}
+
+.sk-row:hover .sk-row-title {
+  color: var(--sk-gold);
+}
+
+.sk-row-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .8rem;
+  color: var(--sk-muted);
+  white-space: nowrap;
+}
+
+.sk-row-summary {
+  display: block;
+  margin-top: .35rem;
+  font-size: .88rem;
+  line-height: 1.7;
+  color: var(--sk-muted);
+}
+
+.sk-more {
+  margin-top: 1.25rem;
+  text-align: right;
+}
+
+.sk-more a {
+  color: var(--sk-gold);
+  text-decoration: none;
+}
+
+/* ---------- 文章正文 ---------- */
+
+.sk-article .article-content {
+  font-size: 17px;
+  line-height: 1.85;
+  max-width: 40rem;
+}
+
+.sk-article .article-content h1,
+.sk-article .article-content h2,
+.sk-article .article-content h3 {
+  color: var(--sk-gold);
+  letter-spacing: .04em;
+}
+
+/* 正文里与页头不同的 h1（英文论文名、副题）按副标题处理 */
+.sk-article .article-content h1 {
+  font-size: 1.55em;
+  line-height: 1.45;
+  margin-top: 0;
+}
+
+.sk-article .article-content h2::before {
+  content: "◆";
+  color: var(--sk-gold);
+  font-size: .7em;
+  margin-right: .5em;
+  vertical-align: .15em;
+}
+
+.sk-article .article-content a {
+  color: var(--sk-gold);
+  text-decoration-color: rgba(243, 213, 139, .4);
+}
+
+.sk-article .article-content a:hover {
+  color: var(--sk-gold-hover);
+}
+
+.sk-article .article-content blockquote {
+  border-left: 3px solid #7d97d6;
+  background: rgba(125, 151, 214, .08);
+  border-radius: 0 .5rem .5rem 0;
+  padding: .4rem 1rem;
+  font-style: normal;
+}
+
+.sk-article .article-content pre {
+  background: var(--sk-card-bg);
+  border: 1px solid var(--sk-card-border);
+  border-radius: .6rem;
+}
+
+.sk-article .article-content :not(pre) > code {
+  color: var(--sk-blue);
+}
+
+.sk-article .article-content th {
+  color: var(--sk-gold);
+}
+
+.sk-article .article-content th,
+.sk-article .article-content td {
+  border: 1px solid var(--sk-card-border);
+  padding: .4rem .7rem;
+}
+
+.sk-article .article-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: .6rem;
+}
+
+.sk-dup-title {
+  display: none;
+}
+
+/* ---------- 文章页附属区 ---------- */
+
+#single_header h1 {
+  font-family: var(--sk-serif);
+  font-weight: 600;
+  letter-spacing: .06em;
+  line-height: 1.4;
+  color: var(--sk-gold);
+}
+
+/* share.html 带内联样式，只能用 !important 覆盖成深空配色 */
+.post-share {
+  border-top-color: var(--sk-card-border) !important;
+}
+
+.post-share .btn-share {
+  border: 1px solid var(--sk-card-border) !important;
+  background: transparent !important;
+  color: var(--sk-gold) !important;
+  border-radius: 999px !important;
+}
+
+.sk-related {
+  margin-top: 3rem;
+  max-width: 40rem;
+}
+
+.sk-related .sk-section-title::before {
+  content: none;
+}
+
+.sk-pagination a:hover {
+  color: var(--sk-gold) !important;
+}
+
+/* ---------- 列表页与专题页 ---------- */
+
+.sk-list-title {
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--sk-gold) !important;
+}
+
+.sk-topic-desc {
+  margin-top: .6rem;
+  font-size: 1rem;
+  color: var(--sk-muted);
+}
+
+.sk-list-count {
+  margin-top: .4rem;
+  font-size: .85rem;
+  color: var(--sk-muted);
+}
+
+.sk-list-count a {
+  color: var(--sk-gold);
+}
+
+.sk-nowrap {
+  white-space: nowrap;
+}
+
+.sk-times {
+  font-weight: 400;
+  opacity: .75;
+}

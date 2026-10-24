@@ -1,0 +1,15 @@
+{{/* 同专题文章：本文第一个专题下、除本文外最新的 3 篇。参数：Page */}}
+{{ with .Params.categories }}
+  {{ $self := $.Permalink }}
+  {{ with site.GetPage (printf "/categories/%s" (index . 0)) }}
+    {{ $others := first 3 (where .Pages.ByDate.Reverse "Permalink" "ne" $self) }}
+    {{ with $others }}
+      <aside class="sk-related">
+        <h2 class="sk-section-title sk-serif">同专题文章</h2>
+        {{ range . }}
+          {{ partial "post-row.html" . }}
+        {{ end }}
+      </aside>
+    {{ end }}
+  {{ end }}
+{{ end }}

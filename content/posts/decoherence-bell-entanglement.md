@@ -4,6 +4,7 @@ date = '2026-10-24T12:50:00+08:00'
 draft = false
 slug = 'decoherence-bell-entanglement'
 tags = ['量子力学', '量子纠缠', '退相干', '贝尔不等式']
+categories = ['科学前沿']
 description = '说明纠缠不是超距传信，贝尔不等式约束的是定域隐变量，退相干会把干涉和贝尔违反一起削弱。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

@@ -1,0 +1,16 @@
+{{/* 单个专题页（/categories/<专题>/）：专题名、说明、该专题全部文章。每个专题篇数少，不分页 */}}
+{{ define "main" }}
+  <header>
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral sk-serif sk-list-title">{{ .Title }}</h1>
+    {{ $title := .Title }}
+    {{ range where site.Data.topics.topic "name" $title }}
+      <p class="sk-topic-desc">{{ .desc }}</p>
+    {{ end }}
+    <p class="sk-list-count">共 {{ len .Pages }} 篇 · <a href="{{ "categories/" | relURL }}">全部专题</a></p>
+  </header>
+  <section class="sk-rows w-full mt-8">
+    {{ range .Pages.ByDate.Reverse }}
+      {{ partial "post-row.html" . }}
+    {{ end }}
+  </section>
+{{ end }}

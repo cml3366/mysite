@@ -4,6 +4,7 @@ date = '2026-10-24T10:00:00+08:00'
 draft = false
 slug = 'quantum-theory-xinyi-philosophy'
 tags = ['新易', '量子力学', 'Qutrit', '炁卦', '科学哲学']
+categories = ['新易体系']
 description = '2025年研究报告：对照新易三态、炁卦与 qutrit、宏观量子隧穿，并写入批判性反思与后续研究方向。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

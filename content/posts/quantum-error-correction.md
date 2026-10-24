@@ -4,6 +4,7 @@ date = '2026-10-24T13:00:00+08:00'
 draft = false
 slug = 'quantum-error-correction'
 tags = ['量子力学', '量子纠错', '退相干', '超导量子计算']
+categories = ['科学前沿']
 description = '量子信息为什么怕噪声，纠错码如何用辅助测量找出错误而不直接读掉逻辑态，以及表面码实验目前站在哪一步。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

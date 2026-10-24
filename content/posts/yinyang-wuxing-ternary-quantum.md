@@ -4,6 +4,7 @@ date = '2026-10-24T10:20:00+08:00'
 draft = false
 slug = 'yinyang-wuxing-ternary-quantum'
 tags = ['新易', '阴阳五行', '三进制', '量子力学', '炁卦']
+categories = ['三进制与九卦']
 description = '以阴、炁、阳三态重写阴阳五行，讨论二元逻辑处理不了的中间态，并给出三进制重构。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

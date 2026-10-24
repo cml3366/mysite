@@ -4,6 +4,7 @@ date = '2026-10-24T13:20:00+08:00'
 draft = false
 slug = 'xinyi-quantum-prediction-design'
 tags = ['新易', '量子计算', 'Qutrit', '系统设计']
+categories = ['新易体系']
 description = '从 2025 年 11 月的设计稿抽出量子起卦、三态表示、世应关联和参数优化四层，并标明哪些步骤仍是示意。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

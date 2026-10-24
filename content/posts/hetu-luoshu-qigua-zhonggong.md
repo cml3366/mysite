@@ -4,6 +4,7 @@ date = '2026-10-24T10:30:00+08:00'
 draft = false
 slug = 'hetu-luoshu-qigua-zhonggong'
 tags = ['新易', '河图洛书', '炁卦', '量子力学', '九宫']
+categories = ['古典研究']
 description = '用炁卦、三进制和量子态重新解释河图十数与洛书九宫，提出中宫是系统的波函数与观测基。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

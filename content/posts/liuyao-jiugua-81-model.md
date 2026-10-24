@@ -4,6 +4,7 @@ date = '2026-10-24T11:10:00+08:00'
 draft = false
 slug = 'liuyao-jiugua-81-model'
 tags = ['新易', '六爻', '八十一卦', '三态爻', '量子易学']
+categories = ['三进制与九卦']
 description = '在火珠林六爻之上建立三态爻，给出九经卦、八十一复卦，以及面向量子易学的形式说明。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

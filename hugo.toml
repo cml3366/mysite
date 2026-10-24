@@ -1,5 +1,7 @@
 baseURL = 'https://blog.cml3366.cn/'
 languageCode = 'zh-cn'
+# 中文按字计数，否则字数与阅读时长会严重偏小
+hasCJKLanguage = true
 title = '宇宙之光 × 古典之韵'
 # Updated: 2025-11-02 - SEO optimization
 theme = 'blowfish'
@@ -11,10 +13,9 @@ buildDrafts = false
 
 # SEO 优化配置
 [params]
-  colorScheme = 'dark'
+  colorScheme = 'shenkong'
   defaultAppearance = 'dark'
   tagline = '宇宙之光 × 古典之韵'
-  customCSS = ["/css/reader.css"]
   
   # SEO 相关设置
   description = '探索易学、哲学、量子计算与宇宙演化的深度思考。从古典智慧到现代科学，发现三态易学与量子理论的惊人共振。'
@@ -36,7 +37,7 @@ buildDrafts = false
   
   # 首页配置
   [params.homepage]
-    layout = "background"
+    layout = "custom"
     showRecent = true
     showRecentItems = 20
     showMoreLink = true
@@ -54,9 +55,17 @@ mainSections = ["posts"]
 
 [menu]
   [[menu.main]]
+    name = '文章'
+    url = '/posts/'
+    weight = 1
+  [[menu.main]]
+    name = '专题'
+    url = '/categories/'
+    weight = 2
+  [[menu.main]]
     name = 'RSS'
     url = '/index.xml'
-    weight = 5
+    weight = 3
 
 # 分页配置
 [pagination]
@@ -67,3 +76,11 @@ mainSections = ["posts"]
   changefreq = 'weekly'
   priority = 0.8
   filename = 'sitemap.xml'
+
+# 站点沿用主题的单一语言 en（勿设 defaultContentLanguage，否则会多出 /en/ 与 /zh-cn/ 两套页面）；
+# 界面文案由 i18n/en.yaml 覆盖为中文，这里只改日期格式
+[languages.en]
+  languageCode = 'zh-cn'
+  [languages.en.params]
+    isoCode = 'zh-cn'
+    dateFormat = '2006年1月2日'
