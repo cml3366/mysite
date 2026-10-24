@@ -4,6 +4,7 @@ date = '2025-11-19T15:00:00+08:00'
 draft = false
 slug = 'physics-quantum-jiugua-qi'
 tags = ['物理学','量子学','九卦炁','Qutrit','量子计算','规范对称性','量子引力','三态易学','科学哲学','宇宙演化']
+categories = ['量子与易学']
 description = '九卦炁体系与现代物理学和量子理论的交汇点：从二进制到三进制的文明跃迁，炁态与量子叠加态的同构，测量坍缩与占筮的统一，规范对称性与基本力的统一，揭示古典智慧与现代物理学的深层共振。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

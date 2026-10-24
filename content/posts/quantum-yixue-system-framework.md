@@ -4,6 +4,7 @@ date = '2025-11-19T19:00:00+08:00'
 draft = false
 slug = 'quantum-yixue-system-framework'
 tags = ['量子计算','易学应用','Qutrit','九爻系统','量子算法','系统架构','软件工程','三进制','量子易学','全景软件系统']
+categories = ['量子与易学']
 description = '构建基于量子计算的易学应用全景软件系统：从经典二元到量子三进制升级，核心算法九爻推元会，量子计算引擎实现高维复杂系统模拟，软件集成与工程化。利用Qutrit模型处理13.5 bits信息熵，实现从定性预测到定量预报的质的飞跃。'
 images = ['/images/qigua-tianyan-og.svg']
 +++

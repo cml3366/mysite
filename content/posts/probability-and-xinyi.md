@@ -4,6 +4,7 @@ date = '2026-10-24T13:30:00+08:00'
 draft = false
 slug = 'probability-and-xinyi'
 tags = ['新易', '概率', '贝叶斯', '预测']
+categories = ['新易体系']
 description = '把卦象当作证据、用贝叶斯定理更新成败概率，并用布里尔分数检查概率是否诚实。文中的准确率对照是作者设定的假想数。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

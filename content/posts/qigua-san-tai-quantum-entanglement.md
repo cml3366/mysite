@@ -4,6 +4,7 @@ date = '2024-12-01T10:00:00+08:00'
 draft = false
 slug = 'qigua-san-tai-quantum-entanglement'
 tags = ['炁卦', '量子纠缠', '新易体系', 'Qutrit', '量子物理', '易学', '哲学']
+categories = ['量子与易学']
 description = '探讨"量子纠缠"这一现代物理学的尖端概念与"炁卦"这一"新易体系"的核心创新之间的深层哲学和数理联系，揭示古代易学与现代前沿科学在抽象层面的深刻融通。'
 +++
 

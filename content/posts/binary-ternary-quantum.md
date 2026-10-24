@@ -4,6 +4,7 @@ date = '2025-11-19T20:00:00+08:00'
 draft = false
 slug = 'binary-ternary-quantum'
 tags = ['二进制','三进制','量子计算','Qubit','Qutrit','量子叠加态','量子纠缠','Grover算法','Shor算法','量子门','哈达玛门','CNOT门','量子信息理论']
+categories = ['三进制与九卦']
 description = '深入解析二进制与三进制计数系统，探讨量子理论中的Qubit与Qutrit，详解量子叠加态和纠缠态的物理实现，分析Grover搜索算法和Shor质因数分解算法，介绍量子门（哈达玛门、CNOT门）的工作原理。从经典计算到量子计算的跨越，揭示量子计算的底层原理。'
 images = ['/images/qigua-tianyan-og.svg']
 +++

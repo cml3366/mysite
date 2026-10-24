@@ -4,6 +4,7 @@ date = '2026-10-24T11:20:00+08:00'
 draft = false
 slug = 'xinyi-quantum-liuyao-fusion'
 tags = ['新易', '六爻', '量子力学', '九爻', '算符']
+categories = ['新易体系']
 description = '把传统六爻的五行、六亲、六神和世应，写成新易九爻三态上的量子态、量子场与演化算符。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

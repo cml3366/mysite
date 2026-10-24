@@ -4,6 +4,7 @@ date = '2026-10-24T12:10:00+08:00'
 draft = false
 slug = 'binary-and-bagua'
 tags = ['二进制', '八卦', '新易', '莱布尼茨', '信息']
+categories = ['三进制与九卦']
 description = '用阴阳二爻说明八卦的八种组合如何对应三位二进制，并说明这种对应止于符号结构。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

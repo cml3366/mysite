@@ -4,6 +4,7 @@ date = '2026-10-24T10:10:00+08:00'
 draft = false
 slug = 'bagua-jiugua-multidimensional-proof'
 tags = ['新易', '九卦', '量子力学', '三进制', '信息论']
+categories = ['三进制与九卦']
 description = '从组合数学、信息容量、三进制量子态、概率分布和实验设计五路，论证八卦升为九卦。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

@@ -4,6 +4,7 @@ date = '2025-11-19T12:00:00+08:00'
 draft = false
 slug = 'zhengzong-yuce'
 tags = ['预测','六爻','占卜','易学','钱蓍','火珠林','纳甲','传统预测']
+categories = ['新易体系']
 description = '灼甲而龟卜，揲蓍而成筮，历经占验而成易象。正宗预测钱蓍六爻，火珠林法纳甲装卦。事之吉凶审用神，旺相休囚生扶合。断卦推演遵循其理，掌握生克旺衰而定吉凶。'
 images = ['/images/qigua-tianyan-og.svg']
 +++

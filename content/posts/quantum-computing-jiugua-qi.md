@@ -4,6 +4,7 @@ date = '2025-11-19T21:00:00+08:00'
 draft = false
 slug = 'quantum-computing-jiugua-qi'
 tags = ['量子计算','九卦炁','Qutrit','炁爻','炁卦','新易体系','量子叠加态','量子纠缠','三进制','量子测量','量子重构','易学','量子信息理论']
+categories = ['量子与易学']
 description = '分析量子计算与九卦炁的关联：炁爻与Qutrit的对应，炁卦与九宫的补全，量子概念的类比与AI应用。新易体系将东方哲学智慧与现代科学原理深度融合，通过引入炁卦补全洛书九宫，构建结构更完备、信息容量更高的预测模型。'
 images = ['/images/qigua-tianyan-og.svg']
 +++

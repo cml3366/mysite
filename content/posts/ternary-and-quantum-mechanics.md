@@ -4,6 +4,7 @@ date = '2026-10-24T12:00:00+08:00'
 draft = false
 slug = 'ternary-and-quantum-mechanics'
 tags = ['三进制', '量子力学', 'Qutrit', '新易', '量子计算']
+categories = ['三进制与九卦']
 description = '说明三进制、qubit 与 qutrit 的差别，以及超导三能级实验里噪声更大、也已开始做误差缓解的事实。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

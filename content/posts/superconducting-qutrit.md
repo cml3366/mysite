@@ -4,6 +4,7 @@ date = '2026-10-24T13:10:00+08:00'
 draft = false
 slug = 'superconducting-qutrit'
 tags = ['Qutrit', '超导量子计算', '量子力学', '误差缓解', '新易']
+categories = ['科学前沿']
 description = '根据 2024 年三 qutrit 实验和 2025 年综述，说明第三能级的计算用途与噪声代价。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

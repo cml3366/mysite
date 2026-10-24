@@ -4,6 +4,7 @@ date = '2026-10-24T11:00:00+08:00'
 draft = false
 slug = 'quantum-life-mingli'
 tags = ['新易', '量子力学', '命理', 'Qutrit', '炁态']
+categories = ['量子与易学']
 description = '从新易三态、太极与量子真空、六亲关联三层，讨论量子概念如何进入人生命理的解释。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

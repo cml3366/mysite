@@ -4,6 +4,7 @@ date = '2026-10-24T11:30:00+08:00'
 draft = false
 slug = 'consciousness-quantum-xinyi'
 tags = ['新易', '量子力学', '意识', '炁态', '哲学']
+categories = ['量子与易学']
 description = '把意识与灵魂作为能量问题来讨论，并专章对照新易炁态、意识状态与量子描述。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

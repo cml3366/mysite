@@ -4,6 +4,7 @@ date = '2025-11-19T11:00:00+08:00'
 draft = false
 slug = 'qidao-jiugua-san-tai-yixue'
 tags = ['炁道','炁卦','九卦体系','易学','哲学','三态易学','河图洛书']
+categories = ['新易体系']
 description = '混元一炁，阴阳未判，斯宇宙之太初也。立炁卦为第九卦，居九宫中枢，统摄八方，使易学符号体系由二进制升维为三进制，由六十四卦扩展至八十一卦，开启三态易学新篇章。'
 images = ['/images/qidao-og.svg']
 +++

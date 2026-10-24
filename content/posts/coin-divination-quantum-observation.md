@@ -4,6 +4,7 @@ date = '2026-10-24T10:40:00+08:00'
 draft = false
 slug = 'coin-divination-quantum-observation'
 tags = ['新易', '量子力学', '占卜', '随机性', '观测']
+categories = ['量子与易学']
 description = '从掷钱的意向、手势与落地，讨论意识、随机性和量子观测在新易占筮里的对应关系。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

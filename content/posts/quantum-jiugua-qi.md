@@ -4,6 +4,7 @@ date = '2025-11-19T14:00:00+08:00'
 draft = false
 slug = 'quantum-jiugua-qi'
 tags = ['量子理论','九卦炁','Qutrit','量子计算','三态易学','量子叠加态','易学','科学哲学']
+categories = ['量子与易学']
 description = '九卦炁体系与量子理论的深刻映射：炁态对应量子叠加态，三进制提升信息容量8.5%，从二进制到三进制的文明跃迁。古老的占卜系统，正成为现代量子计算机的理论镜像。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

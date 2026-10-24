@@ -4,6 +4,7 @@ date = '2025-11-19T17:00:00+08:00'
 draft = false
 slug = 'dongfang-zhexue-xiandai-wuli'
 tags = ['东方哲学','现代物理','量子计算','炁卦理论','Qutrit','三进制','量子叠加态','易学','科学哲学','量子纠缠']
+categories = ['哲思与赋']
 description = '深度分析东方哲学（炁卦理论）与现代物理（量子计算）的惊人共鸣：从经典二进制的局限到量子叠加态的突破，从Qubit到Qutrit的三进制跃迁，揭示古老易学智慧与前沿量子科技的镜像关系。'
 images = ['/images/qigua-tianyan-og.svg']
 +++

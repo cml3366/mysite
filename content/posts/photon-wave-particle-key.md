@@ -4,6 +4,7 @@ date = '2026-10-24T12:30:00+08:00'
 draft = false
 slug = 'photon-wave-particle-key'
 tags = ['光子', '量子力学', '波粒二象性', '量子隧穿', '新易']
+categories = ['科学前沿']
 description = '从光子的能量与动量写到德布罗意关系、势垒隧穿，以及 2025 年诺贝尔奖所确认的宏观电路隧穿。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

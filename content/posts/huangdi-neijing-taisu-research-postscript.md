@@ -4,6 +4,7 @@ date = '2025-11-19T02:00:00+08:00'
 draft = false
 slug = 'huangdi-neijing-taisu-research-postscript'
 tags = ['黄帝内经','太素','炁体','三元融合','炁态三元论','中和之炁','三态医学','中医理论','系统科学','文献学']
+categories = ['古典研究']
 description = '本研究历经对《黄帝内经》及其历代版本源流的深度梳理，构建了"炁体＝太极＝阴炁＋阳炁的和体"为核心的理论新范式，完成了从阴阳二元到阴-炁-阳三元融合的飞跃，为中医学术的创新发展注入了新的活力。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

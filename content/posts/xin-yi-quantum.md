@@ -4,6 +4,7 @@ date = '2025-11-19T13:00:00+08:00'
 draft = false
 slug = 'xin-yi-quantum'
 tags = ['新易理论','量子计算','Qutrit','三态易学','易经','量子物理','科学哲学']
+categories = ['新易体系']
 description = '三千年前的《易经》智慧与21世纪最前沿的量子科技，在"三态"这个神秘节点上完美交汇。新易三态体系与量子qutrit在数学结构上高度同构，总体吻合度达95%，揭示了人类对复杂系统的共通认知模式。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++

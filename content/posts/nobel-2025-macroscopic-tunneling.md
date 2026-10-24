@@ -4,6 +4,7 @@ date = '2026-10-24T12:40:00+08:00'
 draft = false
 slug = 'nobel-2025-macroscopic-tunneling'
 tags = ['量子力学', '诺贝尔奖', '量子隧穿', '约瑟夫森结', '超导']
+categories = ['科学前沿']
 description = '克拉克、德沃雷与马蒂尼斯如何在约瑟夫森结里测到宏观量子隧穿和能量量子化。'
 images = ['/images/xin-yi-quantum-og.svg']
 +++
