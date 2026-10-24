@@ -1,0 +1,182 @@
+/* 深空星图：Blowfish 之上的覆盖样式。主题的 Tailwind 是预编译的，新模板的布局一律写在这里的 sk-* 类中 */
+
+:root {
+  --sk-serif: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", SimSun, serif;
+  --sk-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --sk-gold: rgb(var(--color-primary-300));
+  --sk-gold-hover: rgb(var(--color-primary-500));
+  --sk-blue: rgb(var(--color-secondary-400));
+  --sk-muted: rgb(var(--color-neutral-400));
+  --sk-card-bg: rgba(255, 255, 255, .05);
+  --sk-card-border: rgba(243, 213, 139, .25);
+}
+
+html:not(.dark) {
+  --sk-gold: rgb(var(--color-primary-700));
+  --sk-gold-hover: rgb(var(--color-primary-800));
+  --sk-muted: rgb(var(--color-neutral-600));
+  --sk-card-bg: rgba(255, 255, 255, .7);
+  --sk-card-border: rgba(138, 106, 36, .25);
+}
+
+/* ---------- 全局 ---------- */
+
+body {
+  font-family: var(--sk-sans);
+}
+
+h1, h2, h3, .sk-serif {
+  font-family: var(--sk-serif);
+}
+
+.sk-serif {
+  letter-spacing: .08em;
+}
+
+.dark body {
+  background-image: linear-gradient(180deg, rgba(27, 42, 82, .35), transparent 320px);
+  background-repeat: no-repeat;
+}
+
+/* ---------- 通用组件 ---------- */
+
+.sk-card {
+  display: block;
+  background: var(--sk-card-bg);
+  border: 1px solid var(--sk-card-border);
+  border-radius: .75rem;
+  transition: border-color .2s, transform .2s;
+}
+
+a.sk-card:hover {
+  border-color: var(--sk-gold);
+  transform: translateY(-2px);
+}
+
+.sk-tag {
+  display: inline-block;
+  padding: .05rem .55rem;
+  border-radius: 999px;
+  font-size: .75rem;
+  line-height: 1.5;
+  color: var(--sk-gold);
+  background: rgba(243, 213, 139, .12);
+  white-space: nowrap;
+}
+
+html:not(.dark) .sk-tag {
+  background: rgba(138, 106, 36, .1);
+}
+
+.sk-row {
+  display: block;
+  padding: .9rem 1rem;
+  border-radius: .6rem;
+  border-bottom: 1px dashed rgba(243, 213, 139, .14);
+  text-decoration: none;
+  transition: background .2s;
+}
+
+.sk-row:hover {
+  background: rgba(243, 213, 139, .06);
+}
+
+html:not(.dark) .sk-row {
+  border-bottom-color: rgba(138, 106, 36, .18);
+}
+
+/* ---------- 首页主视觉 ---------- */
+
+.sk-hero {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background:
+    radial-gradient(1px 1px at 12% 22%, rgba(255, 255, 255, .8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 68%, rgba(255, 255, 255, .6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 47% 18%, rgba(255, 255, 255, .7) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 83% 62%, #ffd98a 50%, transparent 51%),
+    radial-gradient(1px 1px at 66% 82%, rgba(255, 255, 255, .5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 92% 14%, rgba(255, 255, 255, .7) 50%, transparent 51%),
+    repeating-linear-gradient(0deg, rgba(243, 213, 139, .04) 0 1px, transparent 1px 33.33%),
+    repeating-linear-gradient(90deg, rgba(243, 213, 139, .04) 0 1px, transparent 1px 33.33%),
+    radial-gradient(ellipse at 70% 0%, #1b2a52, #0a0f1f 60%);
+}
+
+html:not(.dark) .sk-hero {
+  background:
+    radial-gradient(1px 1px at 12% 22%, rgba(138, 106, 36, .5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 47% 18%, rgba(138, 106, 36, .4) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 83% 62%, rgba(138, 106, 36, .6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 66% 82%, rgba(138, 106, 36, .35) 50%, transparent 51%),
+    repeating-linear-gradient(0deg, rgba(138, 106, 36, .05) 0 1px, transparent 1px 33.33%),
+    repeating-linear-gradient(90deg, rgba(138, 106, 36, .05) 0 1px, transparent 1px 33.33%),
+    linear-gradient(160deg, #f5f0e6, #ebe3d0);
+}
+
+/* ---------- 文章正文 ---------- */
+
+.sk-article .article-content {
+  font-size: 17px;
+  line-height: 1.85;
+  max-width: 40rem;
+}
+
+.sk-article .article-content h1,
+.sk-article .article-content h2,
+.sk-article .article-content h3 {
+  color: var(--sk-gold);
+  letter-spacing: .04em;
+}
+
+.sk-article .article-content h2::before {
+  content: "◆";
+  color: var(--sk-gold);
+  font-size: .7em;
+  margin-right: .5em;
+  vertical-align: .15em;
+}
+
+.sk-article .article-content a {
+  color: var(--sk-gold);
+  text-decoration-color: rgba(243, 213, 139, .4);
+}
+
+.sk-article .article-content a:hover {
+  color: var(--sk-gold-hover);
+}
+
+.sk-article .article-content blockquote {
+  border-left: 3px solid #7d97d6;
+  background: rgba(125, 151, 214, .08);
+  border-radius: 0 .5rem .5rem 0;
+  padding: .4rem 1rem;
+  font-style: normal;
+}
+
+.sk-article .article-content pre {
+  background: var(--sk-card-bg);
+  border: 1px solid var(--sk-card-border);
+  border-radius: .6rem;
+}
+
+.sk-article .article-content :not(pre) > code {
+  color: var(--sk-blue);
+}
+
+.sk-article .article-content th {
+  color: var(--sk-gold);
+}
+
+.sk-article .article-content th,
+.sk-article .article-content td {
+  border: 1px solid var(--sk-card-border);
+  padding: .4rem .7rem;
+}
+
+.sk-article .article-content img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: .6rem;
+}

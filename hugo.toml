@@ -11,10 +11,9 @@ buildDrafts = false
 
 # SEO 优化配置
 [params]
-  colorScheme = 'dark'
+  colorScheme = 'shenkong'
   defaultAppearance = 'dark'
   tagline = '宇宙之光 × 古典之韵'
-  customCSS = ["/css/reader.css"]
   
   # SEO 相关设置
   description = '探索易学、哲学、量子计算与宇宙演化的深度思考。从古典智慧到现代科学，发现三态易学与量子理论的惊人共振。'

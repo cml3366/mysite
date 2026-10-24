@@ -1,0 +1,37 @@
+/* 深空星图 scheme：深色模式底色取 neutral-800，正文取 neutral-300（Blowfish 的 prose-invert 约定） */
+:root {
+  --color-neutral: 250, 247, 240;
+  /* 星尘灰：浅端偏暖白，深端为深空蓝黑 */
+  --color-neutral-50: 250, 247, 240;
+  --color-neutral-100: 242, 239, 231;
+  --color-neutral-200: 236, 234, 227;
+  --color-neutral-300: 232, 230, 223;
+  --color-neutral-400: 163, 167, 184;
+  --color-neutral-500: 112, 120, 145;
+  --color-neutral-600: 66, 76, 108;
+  --color-neutral-700: 26, 36, 68;
+  --color-neutral-800: 10, 15, 31;
+  --color-neutral-900: 6, 9, 20;
+  /* 淡金 */
+  --color-primary-50: 254, 250, 237;
+  --color-primary-100: 252, 243, 214;
+  --color-primary-200: 248, 229, 178;
+  --color-primary-300: 243, 213, 139;
+  --color-primary-400: 223, 189, 109;
+  --color-primary-500: 201, 163, 78;
+  --color-primary-600: 170, 135, 56;
+  --color-primary-700: 138, 106, 36;
+  --color-primary-800: 107, 82, 28;
+  --color-primary-900: 77, 59, 20;
+  /* 星蓝 */
+  --color-secondary-50: 240, 244, 252;
+  --color-secondary-100: 222, 230, 248;
+  --color-secondary-200: 193, 208, 240;
+  --color-secondary-300: 160, 181, 228;
+  --color-secondary-400: 125, 151, 214;
+  --color-secondary-500: 95, 124, 196;
+  --color-secondary-600: 71, 99, 170;
+  --color-secondary-700: 54, 77, 138;
+  --color-secondary-800: 40, 58, 106;
+  --color-secondary-900: 27, 42, 82;
+}
