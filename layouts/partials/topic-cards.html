@@ -1,0 +1,12 @@
+{{/* 六张专题卡片：顺序与说明来自 data/topics.toml，篇数在构建时统计。参数：site */}}
+<div class="sk-topics">
+  {{ range site.Data.topics.topic }}
+    {{ with site.GetPage (printf "/categories/%s" .name) }}
+      <a class="sk-card sk-topic" href="{{ .RelPermalink }}">
+        <span class="sk-topic-name sk-serif">{{ .Title }}</span>
+        <span class="sk-topic-desc-short">{{ (index (where site.Data.topics.topic "name" .Title) 0).desc }}</span>
+        <span class="sk-count">{{ len .Pages }} 篇</span>
+      </a>
+    {{ end }}
+  {{ end }}
+</div>

@@ -1,0 +1,11 @@
+{{/* 单行文章条目，用于首页、/posts/、专题页与同专题推荐。参数：Page */}}
+<a class="sk-row" href="{{ .RelPermalink }}">
+  <span class="sk-row-head">
+    <span class="sk-row-title sk-serif">{{ .Title }}</span>
+    <span class="sk-row-meta">
+      {{ with .Params.categories }}<span class="sk-tag">{{ index . 0 }}</span>{{ end }}
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+    </span>
+  </span>
+  <span class="sk-row-summary">{{ (.Description | default .Summary) | plainify | truncate 80 }}</span>
+</a>

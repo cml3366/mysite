@@ -3,8 +3,9 @@ import re
 import shutil
 import subprocess
 import unittest
+import urllib.parse
 
-from helpers import BUILD, ROOT, page
+from helpers import BUILD, EXPECTED, ROOT, page, posts
 
 
 def setUpModule():
@@ -34,6 +35,52 @@ class TestStyles(unittest.TestCase):
 
     def test_light_mode_uses_dark_gold(self):
         self.assertTrue(re.search(r'html:not\(\.dark\)[^{]*\.sk-', css()), '缺少浅色模式覆盖')
+
+
+def published():
+    return [p for p in posts() if not p.meta.get('draft')]
+
+
+def href_to_file(href):
+    """把页面里的相对或绝对链接换算成 .build 下的 index.html。"""
+    rel = urllib.parse.unquote(urllib.parse.urlparse(href).path)
+    rel = rel.removeprefix('https://blog.cml3366.cn').lstrip('./').lstrip('/')
+    return BUILD / rel / 'index.html'
+
+
+class TestHome(unittest.TestCase):
+    def setUp(self):
+        self.h = page('index.html')
+
+    def test_hero(self):
+        t = ' '.join(n.text for n in self.h.select('section', 'sk-hero'))
+        self.assertIn('宇宙之光 × 古典之韵', t)
+        self.assertIn('从古典智慧到量子科学', t)
+
+    def test_six_topic_cards_in_order(self):
+        cards = self.h.select('a', 'sk-topic')
+        self.assertEqual([c.text.split()[0] for c in cards], list(EXPECTED))
+        self.assertIn('11 篇', cards[1].text)
+
+    def test_topic_links_resolve(self):
+        for c in self.h.select('a', 'sk-topic'):
+            self.assertTrue(href_to_file(c.attrs['href']).exists(), c.attrs['href'])
+
+    def test_ten_recent_rows(self):
+        self.assertEqual(len(self.h.select('a', 'sk-row')), 10)
+
+    def test_recent_includes_newest_by_date(self):
+        newest = max(published(), key=lambda p: str(p.meta['date']))
+        self.assertIn(newest.meta['title'], self.h.select('a', 'sk-row')[0].text)
+
+    def test_more_link(self):
+        self.assertTrue(f'查看全部 {len(published())} 篇' in self.h.raw)
+
+    def test_menu(self):
+        labels = [a.text for nav in self.h.select('nav') for a in nav.children if a.tag == 'a'] \
+            or [a.text for a in self.h.select('a')]
+        for label in ('文章', '专题', 'RSS'):
+            self.assertIn(label, labels)
 
 
 if __name__ == '__main__':
