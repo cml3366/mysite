@@ -145,6 +145,14 @@ class TestTypography(unittest.TestCase):
         self.assertNotIn('words', head)
 
 
+class TestSingleLanguage(unittest.TestCase):
+    def test_no_language_subsites(self):
+        self.assertEqual([d for d in ('en', 'zh-cn') if (BUILD / d).exists()], [])
+
+    def test_html_lang_zh_cn(self):
+        self.assertEqual(page('index.html').select('html')[0].attrs.get('lang'), 'zh-cn')
+
+
 class TestLists(unittest.TestCase):
     def test_posts_lists_all(self):
         self.assertEqual(len(page('posts/index.html').select('a', 'sk-row')), len(published()))
@@ -153,6 +161,13 @@ class TestLists(unittest.TestCase):
         h = page('categories/新易体系/index.html')
         self.assertEqual(len(h.select('a', 'sk-row')), 10)
         self.assertIn('九卦炁与三态易学的创立、方法与预测', h.select('p', 'sk-topic-desc')[0].text)
+
+    def test_tag_pages_keep_theme_template(self):
+        self.assertTrue((BUILD / 'tags/qutrit/page/1/index.html').exists())
+        self.assertEqual(page('tags/qutrit/index.html').select('p', 'sk-list-count'), [])
+
+    def test_tags_overview_not_topic_cards(self):
+        self.assertEqual(page('tags/index.html').select('a', 'sk-topic'), [])
 
     def test_terms_page_cards(self):
         self.assertEqual(len(page('categories/index.html').select('a', 'sk-topic')), 6)

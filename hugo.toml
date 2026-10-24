@@ -1,6 +1,5 @@
 baseURL = 'https://blog.cml3366.cn/'
 languageCode = 'zh-cn'
-defaultContentLanguage = 'zh-cn'
 # 中文按字计数，否则字数与阅读时长会严重偏小
 hasCJKLanguage = true
 title = '宇宙之光 × 古典之韵'
@@ -16,8 +15,6 @@ buildDrafts = false
 [params]
   colorScheme = 'shenkong'
   defaultAppearance = 'dark'
-  # 文章日期用中文格式（主题默认 :date_long 在本站输出为英文）
-  dateFormat = '2006年1月2日'
   tagline = '宇宙之光 × 古典之韵'
   
   # SEO 相关设置
@@ -79,3 +76,11 @@ mainSections = ["posts"]
   changefreq = 'weekly'
   priority = 0.8
   filename = 'sitemap.xml'
+
+# 站点沿用主题的单一语言 en（勿设 defaultContentLanguage，否则会多出 /en/ 与 /zh-cn/ 两套页面）；
+# 界面文案由 i18n/en.yaml 覆盖为中文，这里只改日期格式
+[languages.en]
+  languageCode = 'zh-cn'
+  [languages.en.params]
+    isoCode = 'zh-cn'
+    dateFormat = '2006年1月2日'
