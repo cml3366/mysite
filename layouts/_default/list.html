@@ -18,7 +18,12 @@
     {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
       {{ partial "breadcrumbs.html" . }}
     {{ end }}
-    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral sk-serif sk-list-title">{{ .Title }}</h1>
+    {{/* 专题页：显示 data/topics.toml 中的说明 */}}
+    {{ $title := .Title }}
+    {{ range where site.Data.topics.topic "name" $title }}
+      <p class="sk-topic-desc">{{ .desc }}</p>
+    {{ end }}
     <div class="mt-1 mb-2 text-base text-neutral-500 dark:text-neutral-400 print:hidden">
       {{ partial "article-meta/list.html" (dict "context" . "scope" "single") }}
     </div>
@@ -34,10 +39,10 @@
 
   {{/* Article Grid - 显示所有文章，使用分页配置 */}}
   {{ if gt (len .Pages) 0 }}
-    <section class="space-y-10 w-full mt-10">
+    <section class="sk-rows w-full mt-10">
       {{ $paginator := .Paginate (.Pages.ByDate.Reverse) 50 }}
       {{ range $paginator.Pages }}
-        {{ partial "article-link/simple.html" . }}
+        {{ partial "post-row.html" . }}
       {{ end }}
     </section>
     {{ partial "pagination.html" . }}

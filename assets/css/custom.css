@@ -408,3 +408,27 @@ html:not(.dark) .sk-row-title {
 .sk-pagination a:hover {
   color: var(--sk-gold) !important;
 }
+
+/* ---------- 列表页与专题页 ---------- */
+
+.sk-list-title {
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--sk-gold) !important;
+}
+
+.sk-topic-desc {
+  margin-top: .6rem;
+  font-size: 1rem;
+  color: var(--sk-muted);
+}
+
+.sk-list-count {
+  margin-top: .4rem;
+  font-size: .85rem;
+  color: var(--sk-muted);
+}
+
+.sk-list-count a {
+  color: var(--sk-gold);
+}

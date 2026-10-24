@@ -133,5 +133,23 @@ class TestArticle(unittest.TestCase):
         self.assertTrue(post('qidao').select('div', 'sk-article'))
 
 
+class TestLists(unittest.TestCase):
+    def test_posts_lists_all(self):
+        self.assertEqual(len(page('posts/index.html').select('a', 'sk-row')), len(published()))
+
+    def test_category_page(self):
+        h = page('categories/新易体系/index.html')
+        self.assertEqual(len(h.select('a', 'sk-row')), 10)
+        self.assertIn('九卦炁与三态易学的创立、方法与预测', h.select('p', 'sk-topic-desc')[0].text)
+
+    def test_terms_page_cards(self):
+        self.assertEqual(len(page('categories/index.html').select('a', 'sk-topic')), 6)
+
+    def test_no_replacement_char_in_build(self):
+        bad = [str(p.relative_to(BUILD)) for p in BUILD.rglob('*.html')
+               if '�' in p.read_text(encoding='utf-8')]
+        self.assertEqual(bad, [])
+
+
 if __name__ == '__main__':
     unittest.main()

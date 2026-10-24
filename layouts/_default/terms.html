@@ -1,0 +1,9 @@
+{{/* 专题总览（/categories/）：与首页相同的六张专题卡片 */}}
+{{ define "main" }}
+  <header>
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral sk-serif sk-list-title">专题</h1>
+  </header>
+  <section class="sk-section">
+    {{ partial "topic-cards.html" site }}
+  </section>
+{{ end }}
