@@ -83,5 +83,55 @@ class TestHome(unittest.TestCase):
             self.assertIn(label, labels)
 
 
+def post_page(p):
+    return page(f"posts/{p.meta.get('slug', p.slug)}/index.html")
+
+
+def post(stem):
+    return post_page(next(p for p in posts() if p.slug == stem))
+
+
+def related_rows(h):
+    return [n for a in h.select('aside', 'sk-related') for n in a.children if 'sk-row' in n.classes]
+
+
+class TestArticle(unittest.TestCase):
+    def test_title_meta_present(self):
+        h = post('qidao')
+        self.assertIn('炁道：第九卦的创立与三态易学体系的开启', h.select('h1')[0].text)
+        self.assertTrue(h.select('time') or '分钟' in h.raw)
+
+    def test_duplicate_body_h1_marked(self):
+        self.assertEqual(len(post('qidao').select('h1', 'sk-dup-title')), 1)
+
+    def test_quote_first_article_keeps_quote(self):
+        h = post('superconducting-qutrit')
+        self.assertTrue(h.select('blockquote'))
+        self.assertEqual(len(h.select('h1', 'sk-dup-title')), 1)
+
+    def test_body_without_h1_has_no_dup_mark(self):
+        h = post('weitegensitan-zhexue-yanjiu-liubian-buju')
+        self.assertEqual(h.select('h1', 'sk-dup-title'), [])
+
+    def test_toc_only_with_three_h2(self):
+        for p in published():
+            n = sum(1 for line in p.body.splitlines() if line.startswith('## '))
+            self.assertEqual(bool(post_page(p).select('div', 'toc')), n >= 3, p.slug)
+
+    def test_related_excludes_self_and_caps_at_three(self):
+        rows = related_rows(post('weilai-fu-gaowei-xiaoyaoyou'))
+        self.assertEqual(len(rows), 2)
+        self.assertNotIn('未来赋', ' '.join(r.text for r in rows))
+        self.assertEqual(len(related_rows(post('qidao'))), 3)
+
+    def test_share_and_pagination(self):
+        h = post('qidao')
+        self.assertTrue(h.select('div', 'post-share'))
+        self.assertTrue(h.select('nav', 'sk-pagination'))
+
+    def test_article_wrapped(self):
+        self.assertTrue(post('qidao').select('div', 'sk-article'))
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -369,3 +369,42 @@ html:not(.dark) .sk-row-title {
   margin-right: auto;
   border-radius: .6rem;
 }
+
+.sk-dup-title {
+  display: none;
+}
+
+/* ---------- 文章页附属区 ---------- */
+
+#single_header h1 {
+  font-family: var(--sk-serif);
+  font-weight: 600;
+  letter-spacing: .06em;
+  line-height: 1.4;
+  color: var(--sk-gold);
+}
+
+/* share.html 带内联样式，只能用 !important 覆盖成深空配色 */
+.post-share {
+  border-top-color: var(--sk-card-border) !important;
+}
+
+.post-share .btn-share {
+  border: 1px solid var(--sk-card-border) !important;
+  background: transparent !important;
+  color: var(--sk-gold) !important;
+  border-radius: 999px !important;
+}
+
+.sk-related {
+  margin-top: 3rem;
+  max-width: 40rem;
+}
+
+.sk-related .sk-section-title::before {
+  content: none;
+}
+
+.sk-pagination a:hover {
+  color: var(--sk-gold) !important;
+}
